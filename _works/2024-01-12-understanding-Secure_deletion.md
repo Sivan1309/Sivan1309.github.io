@@ -1,7 +1,7 @@
 ---
-layout: post
-title: "The Delete Button Is Lying to You: Mastering Secure Data Destruction on Windows"
-date: 2024-01-12 10:00:00 +0530
+Layout: Post
+Title: "The Delete Button Is Lying to You: Mastering Secure Data Destruction on Windows"
+Date: 2024-01-12 10:00:00 +0530
 --- 
 # You Hit Delete. Did Your Data Really Die?
 
@@ -176,6 +176,10 @@ Regularly reviewing these logs is essential to stay informed about system activi
 Secure data deletion requires a fundamental shift in perspective: **Deletion is a process of erasure and subsequent overwriting, followed by strict monitoring for accountability**.
 
 The overall data security policy emphasizes safeguarding information through clear guidelines on how to secure data, ensuring that the necessary action is taken *after* a file is 'deleted' to prevent recovery before the data is overwritten. By implementing audit measures to track every deletion attempt, we create a secure framework that aligns with industry standards and regulatory demands.
+
+
+
+
 
 
 
