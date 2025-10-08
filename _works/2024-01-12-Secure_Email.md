@@ -1,4 +1,3 @@
-
 ---
 Layout: Post
 Title: "Stop Sending Postcards: A Deep Dive into Email Encryption and Security"
@@ -164,7 +163,7 @@ The choice is yours, but remember: **securing your data is the only way to stop 
 
 
 ---
-Copyright Notice
+**Copyright Notice**
 
 Copyright © 2024 [Sivan1309.github.io].
 
