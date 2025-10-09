@@ -1,7 +1,6 @@
 ---
-Layout: Post
 Title: "Stop Sending Postcards: A Deep Dive into Email Encryption and Security"
-Date: 2024-01-12 10:00:00 +0530
+Date: 2024-01-12 
 ---
 
 

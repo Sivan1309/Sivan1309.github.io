@@ -1,7 +1,6 @@
 ---
-Layout: Post
 Title: "The Delete Button Is Lying to You: Mastering Secure Data Destruction on Windows"
-Date: 2024-01-12 10:00:00 +0530
+Date: 2024-01-12
 --- 
 # You Hit Delete. Did Your Data Really Die?
 
