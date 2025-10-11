@@ -50,7 +50,7 @@ My solution focused on the following key areas, bridging technical analysis (How
 
 <img width="1286" height="1442" alt="Image" src="https://github.com/user-attachments/assets/c63de468-ad8d-43aa-8fe3-8742ba86a670" />
 
-<img width="1286" height="1442" alt="Image" src="https://github.com/user-attachments/assets/c224423a-d0e6-4856-a0f0-126906fa770f" />
+<img width="1874" height="1390" alt="Image" src="https://github.com/user-attachments/assets/b5405ea9-e2c2-4d4e-a2a4-c31847716965" />
 
 ## Impact: Quantifiable Results and Demonstrated Threat Mitigation
 
