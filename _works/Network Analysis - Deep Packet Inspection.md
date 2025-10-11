@@ -22,6 +22,8 @@ My solution focused on the following key areas, bridging technical analysis (How
 *   By observing a suspicious change in the Ethernet MAC address within DHCP requests (specifically, the MAC changing from `02:60:AC:9A:BC:DD` in frame 2 to `02:60:AC:9A:BC:05` in frame 170, for IP `192.168.97.250`), I successfully **identified markers of a potential rogue DHCP server**.
 *   This detection is crucial because it immediately highlighted the network’s vulnerability to a catastrophic **DHCP Spoofing Attack**, which grants unauthorized hosts control over network addressing.
 
+![Alt text](https://github.com/Sivan1309/Sivan1309.github.io/tree/c37f27504ac6ebd2738ce19ce8802c02fe596d9b/images/dhcp.png)
+
 ### 2. Vulnerability Exposure (HTTP)
 
 *   **Demonstrated Capability:** **Application layer security auditing** and **risk remediation**.
