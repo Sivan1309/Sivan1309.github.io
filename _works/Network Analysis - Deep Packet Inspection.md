@@ -22,12 +22,15 @@ My solution focused on the following key areas, bridging technical analysis (How
 *   By observing a suspicious change in the Ethernet MAC address within DHCP requests (specifically, the MAC changing from `02:60:AC:9A:BC:DD` in frame 2 to `02:60:AC:9A:BC:05` in frame 170, for IP `192.168.97.250`), I successfully **identified markers of a potential rogue DHCP server**.
 *   This detection is crucial because it immediately highlighted the network’s vulnerability to a catastrophic **DHCP Spoofing Attack**, which grants unauthorized hosts control over network addressing.
 
+<img width="1554" height="1128" alt="Image" src="https://github.com/user-attachments/assets/2844f798-a029-43a8-a1a0-5c0310d5409d" />
 
 ### 2. Vulnerability Exposure (HTTP)
 
 *   **Demonstrated Capability:** **Application layer security auditing** and **risk remediation**.
 *   I inspected application layer protocols (HTTP), immediately confirming that client and server communication was occurring over unencrypted **HTTP**.
 *   This exposure creates an immediate, severe vulnerability, demonstrating my capability to **diagnose high-risk weaknesses that lead to Man-in-the-Middle (MITM) attacks** and expose sensitive data to adversaries.
+
+<img width="1438" height="762" alt="Image" src="https://github.com/user-attachments/assets/40e2b109-f175-4927-8b02-9219005f4601" />
 
 ### 3. Active Reconnaissance Identification (TCP/ICMP)
 
@@ -36,10 +39,18 @@ My solution focused on the following key areas, bridging technical analysis (How
 *   I confirmed that the IP address `192.168.97.4` was performing port scanning via incomplete TCP handshakes, which is not a legitimate activity.
 *   Additionally, I identified sustained **ICMP ping requests** between multiple IPs—a technique used to check if a particular server is alive—confirming ongoing **network reconnaissance activity**.
 
+<img width="1426" height="616" alt="Image" src="https://github.com/user-attachments/assets/69208046-7d53-42fe-9b3d-5045ad612e83" />
+
+<img width="1464" height="346" alt="Image" src="https://github.com/user-attachments/assets/399fa0d1-4f70-4430-ae69-8bd79109f231" />
+
 ### 4. Integrated Threat Intelligence
 
 *   **Demonstrated Capability:** **Host reputation analysis** and **external threat intelligence integration**.
 *   I executed host reputation analysis and reviewed files communicated by involved hosts (including `192.168.97.4`, `192.168.97.41`, and `192.168.97.102`) by integrating findings with **VirusTotal**. This critical step ensured I could quickly **isolate potentially compromised endpoints** and document the risk posed by specific digital artifacts.
+
+<img width="1286" height="1442" alt="Image" src="https://github.com/user-attachments/assets/c63de468-ad8d-43aa-8fe3-8742ba86a670" />
+
+<img width="1286" height="1442" alt="Image" src="https://github.com/user-attachments/assets/c224423a-d0e6-4856-a0f0-126906fa770f" />
 
 ## Impact: Quantifiable Results and Demonstrated Threat Mitigation
 
