@@ -68,12 +68,8 @@ I overcame this by meticulously cross-referencing the detailed DHCP findings wit
 
 
 
----
+---------------------------------------------------------------------------------
 **Copyright Notice**
 
-Copyright © 2024 [Sivan1309.github.io].
-
-This publication is the intellectual property of [Sivarama_Krishnan_Chandran] and is protected by international copyright law. All rights are reserved.
-
-No part of this article may be reproduced, distributed, or transmitted in any form or by any means, including photocopying, recording, or other electronic or mechanical methods, without the prior written permission of the author. Brief quotations are permitted for noncommercial use in the case of reviews and critical analysis, provided that full and clear credit is given to 
-[Sivarama_Krishnan_Chandran] with a link to the original content.
+> *Copyright © 2024 [Sivarama_Krishnan_Chandran]. This work is the intellectual property of the author. No part of this publication may be reproduced, distributed, or transmitted in any form or by any means, including photocopying, recording, or other electronic or mechanical methods, without the prior written permission of the publisher, except in the case of brief quotations embodied in critical reviews and certain other noncommercial uses permitted by copyright law.*
+----------------------------------------------------------------------------------
