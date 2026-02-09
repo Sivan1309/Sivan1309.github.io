@@ -82,6 +82,8 @@ Success is measured through detection reliability, rule tuning outcomes, telemet
 
 The lab architecture mirrors enterprise heterogeneity to validate detection consistency across operating systems and telemetry sources.
 
+<img width="949" height="677" alt="Image" src="https://github.com/user-attachments/assets/16712880-50b6-4444-9240-f9daf1850c12" />
+
 ### Architecture Rationale
 
 **AWS EC2 Deployment**
@@ -93,15 +95,43 @@ Cross-platform coverage ensures that detection engineering does not become Windo
 ### Telemetry & Detection Stack — Security Reasoning
 
 **Elastic Cloud SIEM** — centralized correlation and rule validation hub
+
 **Fleet Server** — ensures consistent agent policy enforcement
+
 **Elastic Defend (EDR)** — validates behavior-based endpoint detection
+
 **Sysmon + Winlogbeat** — deep Windows behavioral telemetry
+
 **Auditbeat & Filebeat** — Linux syscall and file integrity monitoring
+
 **Slack Webhook Integration** — converts detection into immediate operational signal
 
 Optional enhancement: SOAR-based automated containment actions.
 
 ---
+
+### Architecture Assessment Phase
+
+This phase serves as a critical "Go/No-Go" validation step before the Purple Team engagement begins. It ensures the environment is stable, secure, and capable of capturing the necessary telemetry for the exercise.
+**Infrastructure Readiness (AWS & OS)**
+• Instance Verification: Validate that AWS EC2 instances (Windows & Ubuntu) have the correct compute resources, IAM roles, and Security Group configurations to support the workload.
+• Hardening: Ensure the Operating Systems are patched, unnecessary services are disabled, and host-based firewalls are restricted to essential traffic only.
+**Telemetry & SIEM Validation**
+• Agent Health: Confirm "heartbeat" connectivity between endpoints (Windows/Ubuntu) and the Elastic Fleet Server.
+• Log Pipeline: Verify that critical logs—specifically Sysmon (Windows), Auditbeat (Linux), and standard Event Logs—are successfully ingesting into the Elastic SIEM without parsing errors.
+**Detection Logic & Intelligence**
+• Threat Intel Integration: Check that feeds from Abuse.ch and AlienVault OTX are active and correctly correlating against incoming log data.
+• Rule Tuning: Stress-test detection rules. Run benign activities to check for false positives (noise) and simple attacks (e.g., port scans) to validate true positives.
+**Alerting Pipeline**
+• Notification Delivery: Trigger controlled alerts to verify they are successfully routed to the designated Slack channels.
+• Response Workflow: Confirm the SOC team receives alerts in real-time and has a defined process for acknowledging and investigating them.
+**Performance Baselines**
+• System Stability: Monitor CPU and memory usage on EC2 instances and the SIEM during a quiet period to establish a performance baseline before adding Red Team load.
+• Log Throughput: Ensure the SIEM handles the current log volume within maintainable thresholds to prevent data loss or processing delays.
+**Offensive Tool Verification**
+• Atomic Red Team: Verify the installation of the Atomic Red Team framework on both endpoints. Execute a basic TTP (Tactic, Technique, Procedure) to confirm the tool functions and generates the expected log activity.
+**Initial Security Baseline**
+• Vulnerability Scan: Conduct a pre-engagement assessment using AWS Inspector or manual audits to identify and document any pre-existing vulnerabilities, ensuring a clean baseline before the exercise begins.
 
 ## 6. Purple Team Methodology: The Iterative Cycle
 
@@ -136,82 +166,108 @@ Each cycle must produce measurable detection maturity gains.
 
 ---
 
-## 7. Technical PoC Phase I: Privilege Escalation & UAC Bypass (T1548.002)
+Based on the detailed analysis of the provided project report, here is the comprehensive draft for **Proof of Concept (POC) Phase 1** and **Phase 2**.
 
-### Threat Context
+This content is structured to be inserted directly into your final report, focusing on technical precision, methodology, and analytical outcomes.
 
-UAC bypass enables privilege escalation without user prompts, supporting stealthy admin-level execution. It maps to:
+***
 
-* Privilege Escalation
-* Defense Evasion
-* Persistence enablement
+# 6. Proof of Concept (Phase 1) - Purple Team Exercise Execution
 
-### Method Selection Reasoning
+To validate the Purple Team architecture, **Atomic Red Team** was selected as the primary adversary emulation framework. This phase focused on testing the organization's defense against privilege escalation, a critical step in the cyber kill chain.
 
-Atomic Red Team was selected for reproducible, ATT&CK-mapped technique simulation with minimal environmental side effects, enabling repeat testing for rule tuning.
+## 6.1 Variant Selection: T1548.002 – Abuse Elevation Control Mechanism (Bypass UAC)
+The specific technique selected for this simulation was **MITRE ATT&CK T1548.002**.
 
-```powershell
-Invoke-AtomicTest T1548.002
-```
+*   **Definition:** This technique involves exploiting the Windows User Account Control (UAC) mechanism to elevate process privileges without prompting the user for confirmation.
+*   **Threat Context:** Adversaries frequently utilize UAC bypasses to transition from a standard user context to high-integrity administrative privileges. Successfully executing this allows attackers to maintain persistence, modify system configurations, and evade standard defenses.
+*   **Selection Rationale:** This technique was chosen because it generates specific telemetry (registry modifications, process spawning) that challenges standard EDR configurations. It serves as a high-fidelity test for the Blue Team’s ability to distinguish between legitimate administrative actions and malicious escalation.
 
-### Detection Engineering Focus
+## 6.2 Methodology Implementation Utilizing Atomic Red Team
+The execution followed a strict operational workflow to ensure a controlled yet realistic simulation.
 
-Expected artifacts included:
+1.  **Environment Preparation:**
+    *   The test was conducted on the hardened **Windows Server EC2 instance**.
+    *   Telemetry sensors (Elastic Agent, Sysmon, Winlogbeat) were verified as active and reporting to the Elastic SIEM.
 
-* Suspicious process creation chains
-* Elevated child processes without consent UI
-* Parent-child lineage anomalies
-* Trusted binary proxy execution patterns
+2.  **Attack Execution:**
+    *   The Red Team executed the **Atomic Red Team** script for `T1548.002`.
+    *   **Mechanism:** The script utilized "Living off the Land" binaries (LoLBins)—built-in Windows executables—to spawn a high-integrity process (e.g., `cmd.exe` or `powershell.exe`) by manipulating registry keys associated with UAC auto-elevation.
 
-### Validation Criteria
+![Figure 10: Atomic Test script Invoke command]
 
-Detection success required:
+3.  **Real-Time Monitoring:**
+    *   The Blue Team monitored the **Elastic SIEM** dashboard.
+    *   **Data Collection:** Analysis focused on identifying specific Event IDs from Sysmon (Process Creation, Registry Modification) and Windows Security Logs.
 
-* Sysmon telemetry capture
-* SIEM parsing accuracy
-* Rule trigger validation
-* Slack alert delivery
+## 6.3 Evaluation and Analysis
+The effectiveness of the detection logic was evaluated against three core criteria:
 
-This validated the entire detection pipeline end-to-end.
+*   **Detection Capability:**
+    *   The exercise successfully validated that the security stack could ingest and correlate the relevant logs.
+    *   **Result:** The SIEM successfully triggered alerts based on the correlation of registry key modification followed immediately by a high-integrity process spawn.
 
----
+![Figure 11: Detection Capability]
+![Figure 12: Alerting Capability]
+![Figure 13: Top triggered rules]
 
-## 8. Technical PoC Phase II: Ransomware Emulation
+*   **Gap Analysis:**
+    *   Initial testing highlighted potential gaps where default rule thresholds might generate false positives from legitimate software installers.
+    *   **Outcome:** Detection rules were tuned to filter out known-good administrative tools, increasing the fidelity of the alerts for future engagements.
 
-### Threat Context
+***
 
-Ransomware behavior stresses detection, response speed, and cross-platform visibility. It represents the impact stage of the kill chain where time-to-detect directly determines business damage.
+# 7. Proof of Concept (Phase 2) - Ransomware Emulation with AttackIQ Flex
 
-### Method Selection Reasoning
+Phase 2 shifted focus from stealthy escalation to high-impact destruction. This phase utilized **AttackIQ Flex** to emulate ransomware behavior using EICAR samples, rigorously testing the organization's automated response capabilities.
 
-AttackIQ Flex and EICAR samples enabled safe simulation of encryption-like behaviors and file impact patterns without destructive payload risk.
+## 7.1 Objective of Ransomware Adversary Emulation
+Ransomware remains a dominant threat to enterprise continuity. The objectives of this emulation were:
+1.  **Endpoint Security Assessment:** Verify if Elastic Defend and Sysmon could detect mass-encryption behaviors.
+2.  **Incident Response Validation:** Measure the "Mean Time to Detect" (MTTD) and ensure automated alerts were routed to Slack immediately.
+3.  **Blue Team Readiness:** Provide the SOC team with hands-on experience in analyzing ransomware artifacts (ransom notes, file extension changes).
 
-### Detection Strategy
+## 7.2 Execution Methodology with AttackIQ Flex
+**AttackIQ Flex** was deployed to manage the execution of EICAR ransomware samples across both Windows and Ubuntu Linux endpoints.
 
-**Windows**
+1.  **Scenario Setup:**
+    *   Scenarios were configured to mimic the *behavior* of real-world ransomware families without the destructive payload.
+    *   **Actions Simulated:**
+        *   **File Encryption:** Rapid modification of file extensions.
+        *   **Ransom Note Creation:** dropping text files in multiple directories to simulate attacker communication.
 
-* Behavioral EDR triggers
-* Rapid file-write burst detection
-* Process-driven modification patterns
+2.  **Execution:**
+    *   The emulation was triggered simultaneously on Windows and Linux assets to test the SIEM's ability to handle cross-platform alerts.
 
-**Linux**
+3.  **Surveillance & Data Acquisition:**
+    *   **Filebeat** monitored the file system for rapid changes.
+    *   **Auditbeat** (on Linux) monitored for suspicious file creation events.
+    *   **Network Monitoring** looked for command-and-control (C2) callbacks often associated with encryption key generation.
 
-* Auditbeat syscall monitoring
-* Unauthorized file access tracking
-* File integrity anomaly detection
+## 7.3 Evaluation and Results
 
-### Validation Criteria
+*   **Detection Accuracy & Speed:**
+    *   The focus was on how quickly the "Alert" pipeline processed the event.
+    *   **Observation:** Alerts were generated within seconds of the file modification events, proving the efficiency of the real-time pipeline.
 
-* File activity telemetry present
-* Behavior patterns observable
-* Detection rules triggered
-* Alerting pipeline functional
+![Figure 14: Detection – MITRE Framework]
 
-This validated impact-stage detection readiness.
+*   **Response & Mitigation:**
+    *   The exercise evaluated whether "Prevention Mode" in Elastic Defend would isolate the process.
+    *   **Outcome:** The system successfully identified the signature of the EICAR test files and the behavioral pattern of the encryption script, initiating automated blocking actions.
 
----
+![Figure 15: Response – MITRE Framework]
 
-## 9. Detection Engineering & Alerting Logic
+*   **Gap Identification:**
+    *   The emulation revealed specific nuances in Linux detection versus Windows detection.
+    *   **Optimization:** Additional file integrity monitoring (FIM) rules were suggested for the Linux environment to catch ransomware that doesn't match standard signatures.
+
+![Figure 16: Gap Identification – Security Controls]
+
+### Value to Purple Teaming
+This phase demonstrated that while signature-based detection (EICAR) works well, behavioral detection (identifying the *act* of encryption) is critical for stopping zero-day ransomware. The collaboration allowed the Blue Team to refine their "Ransomware Playbook" to include immediate host isolation steps.
+
+## 8. Detection Engineering & Alerting Logic
 
 Detection engineering prioritized **high-signal behavioral telemetry over log volume**.
 
@@ -242,7 +298,7 @@ Optional enhancement: severity-based alert routing.
 
 ---
 
-## 10. Security Outcomes & Business Impact
+## 9. Security Outcomes & Business Impact
 
 This framework produces operational and business-level security value by converting adversary simulation into validated detection capability.
 
@@ -279,7 +335,7 @@ Repeated adversary validation exercises build institutional detection confidence
 
 ---
 
-## 11. Portfolio Highlights — Capability Demonstration Matrix
+## 10. Portfolio Highlights — Capability Demonstration Matrix
 
 | Capability Domain          | Demonstrated Through This Project                                      | Practical Value to Security Teams                                         |
 | -------------------------- | ---------------------------------------------------------------------- | ------------------------------------------------------------------------- |
@@ -293,7 +349,7 @@ Repeated adversary validation exercises build institutional detection confidence
 
 ---
 
-## 12. Key Lessons Learned (Hiring & Implementation Value)
+## 11. Key Lessons Learned (Hiring & Implementation Value)
 
 This project demonstrates not only technical execution but also how to operationalize Purple Teaming in a way that delivers measurable defensive value to an organization.
 
@@ -322,7 +378,7 @@ Attackers pivot to weaker monitoring surfaces. I design and validate detection c
 
 ---
 
-## 13. Future Security Roadmap
+## 12. Future Security Roadmap
 
 Future evolution of this framework focuses on scaling detection maturity and response automation.
 
