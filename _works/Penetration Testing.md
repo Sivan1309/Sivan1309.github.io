@@ -235,13 +235,13 @@ To move beyond reactive patching and establish long-term resilience, the organiz
 
 While outsourcing is an option, establishing an internal team offers distinct strategic advantages that directly impact security outcomes:
 
-* Tailored Security Operations: An internal team creates monitoring protocols and processes specifically aligned with the organization's unique business needs and risk profile, rather than a generic "one-size-fits-all" approach.
+* **Tailored Security Operations**: An internal team creates monitoring protocols and processes specifically aligned with the organization's unique business needs and risk profile, rather than a generic "one-size-fits-all" approach.
 
-* Contextual Intelligence: Internal staff possess a deep, comprehensive understanding of the organization's specific network topology, data flows, and system dependencies. This allows for faster threat detection and more accurate risk assessment compared to external vendors.
+* **Contextual Intelligence**: Internal staff possess a deep, comprehensive understanding of the organization's specific network topology, data flows, and system dependencies. This allows for faster threat detection and more accurate risk assessment compared to external vendors.
 
-* Data Sovereignty & Control: Keeping security operations in-house ensures that sensitive logs and incident data remain within the organization's jurisdiction, reducing third-party privacy risks and ensuring compliance with data control regulations.
+* **Data Sovereignty & Control**: Keeping security operations in-house ensures that sensitive logs and incident data remain within the organization's jurisdiction, reducing third-party privacy risks and ensuring compliance with data control regulations.
 
-* Service Level Agreements (SLAs): An internal team eliminates the friction of vendor communication, allowing for immediate incident handling without breaching SLAs. This integrity is critical for maintaining stakeholder trust.
+* **Service Level Agreements (SLAs)**: An internal team eliminates the friction of vendor communication, allowing for immediate incident handling without breaching SLAs. This integrity is critical for maintaining stakeholder trust.
 
 ---
 
@@ -249,11 +249,11 @@ While outsourcing is an option, establishing an internal team offers distinct st
 
 To support this capability, we propose a cost-effective, open-source focused technology stack:
 
-* Centralized Monitoring (SIEM): Deploy the ELK Stack (Elasticsearch, Logstash, Kibana). This will serve as the core Security Information and Event Management (SIEM) solution, responsible for ingesting event data from the network and processing it to detect malicious or suspicious activities.
+* **Centralized Monitoring (SIEM)**: Deploy the ELK Stack (Elasticsearch, Logstash, Kibana). This will serve as the core Security Information and Event Management (SIEM) solution, responsible for ingesting event data from the network and processing it to detect malicious or suspicious activities.
 
-* Threat Intelligence Integration: The architecture should integrate external threat feeds, such as AlienVault, to correlate internal logs with known global threat actors.
+* **Threat Intelligence Integration**: The architecture should integrate external threat feeds, such as AlienVault, to correlate internal logs with known global threat actors.
 
-* Incident Management & Alerting: Integrate the SIEM with ticketing and alerting platforms like PagerDuty. When the ELK stack detects a "True Positive" based on custom correlation rules, it will trigger an immediate alert to the triage team to streamline the workflow.
+* **Incident Management & Alerting**: Integrate the SIEM with ticketing and alerting platforms like PagerDuty. When the ELK stack detects a "True Positive" based on custom correlation rules, it will trigger an immediate alert to the triage team to streamline the workflow.
 
 ---
 
@@ -261,15 +261,15 @@ To support this capability, we propose a cost-effective, open-source focused tec
 
 The proposed workflow integrates Security Monitoring (detection) with Security Management (response), following a lifecycle approach:
 
-1. Triage & Analysis: Upon receiving an alert, the team analyzes the security incident to determine its validity and scope.
+1. **Triage & Analysis**: Upon receiving an alert, the team analyzes the security incident to determine its validity and scope.
 
-2. Containment: The CSIRT coordinates the immediate response. This includes blocking malicious IP/DNS addresses and isolating affected systems to prevent lateral movement.
+2. **Containment**: The CSIRT coordinates the immediate response. This includes blocking malicious IP/DNS addresses and isolating affected systems to prevent lateral movement.
 
-3. Eradication & Mitigation: The team identifies the root cause and preserves forensic evidence. Remediation steps involve installing updates, patching unsupported systems, and implementing long-term fixes.
+3. **Eradication & Mitigation**: The team identifies the root cause and preserves forensic evidence. Remediation steps involve installing updates, patching unsupported systems, and implementing long-term fixes.
 
-4. Recovery: Once the threat is neutralized, the team assists in transitioning systems back to normal operations and removing temporary blocks.
+4. **Recovery**: Once the threat is neutralized, the team assists in transitioning systems back to normal operations and removing temporary blocks.
 
-5. Post-Incident Review: The process concludes with a "Lessons Learned" phase to refine security protocols and prevent recurrence.
+5. **Post-Incident Review**: The process concludes with a "Lessons Learned" phase to refine security protocols and prevent recurrence.
 
 ---
 
@@ -277,9 +277,9 @@ The proposed workflow integrates Security Monitoring (detection) with Security M
 
 Providing 24/7 coverage is resource-intensive, typically requiring six distinct teams to cover all shifts and holidays. To balance budget and security coverage, we recommend a hybrid operational model:
 
-* Business Hours: Full internal CSIRT operation.
+* **Business Hours**: Full internal CSIRT operation.
 
-* Off-Hours: Use of an "On-Call" duty phone for emergency escalations, or outsourcing night/weekend monitoring to a third-party partner while retaining incident management authority in-house.
+* **Off-Hours**: Use of an "On-Call" duty phone for emergency escalations, or outsourcing night/weekend monitoring to a third-party partner while retaining incident management authority in-house.
 
 
 ---
@@ -290,15 +290,15 @@ Security resilience is achieved through continuous improvement, proactive valida
 
 This engagement demonstrates proficiency in the following areas:
 
-• **Vulnerability Assessment Tools**: Nmap (Network Discovery), Nikto (Server Scanning), OWASP ZAP (Proxy/Interceptor), Burp Suite methodologies.
+* **Vulnerability Assessment Tools**: Nmap (Network Discovery), Nikto (Server Scanning), OWASP ZAP (Proxy/Interceptor), Burp Suite methodologies.
 
-• **Manual Exploitation**: SQL Injection, Parameter Tampering, HTTP Method Manipulation.
+* **Manual Exploitation**: SQL Injection, Parameter Tampering, HTTP Method Manipulation.
 
-• **Security Frameworks**: NIST SP 800-115, OWASP Top 10, MITRE ATT&CK.
+* **Security Frameworks**: NIST SP 800-115, OWASP Top 10, MITRE ATT&CK.
 
-• **Blue Team/Defensive Strategy**: Designing CSIRT workflows, SIEM architecture (ELK), and Patch Management policies.
+* **Blue Team/Defensive Strategy**: Designing CSIRT workflows, SIEM architecture (ELK), and Patch Management policies.
 
-• **Reporting**: Translating complex technical data into actionable business intelligence with calculated risk ratings (CVSS).
+* **Reporting**: Translating complex technical data into actionable business intelligence with calculated risk ratings (CVSS).
 
 
 **Copyright Notice**
