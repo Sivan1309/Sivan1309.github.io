@@ -89,6 +89,8 @@ To standardize attack mapping and improve stakeholder understanding, observed at
 | Persistence       | Modify Authentication Process | T1556     | Password tampering  |
 | Impact            | Data Manipulation             | T1195     | Basket logic abuse  |
 
+<img width="1862" height="1166" alt="Image" src="https://github.com/user-attachments/assets/5cf765ee-7c99-480c-84c3-3905122b4e2a" />
+
 ### Attack Path Narrative
 
 The attack chain began with discovery of an exposed administrative endpoint. This allowed collection of sensitive internal details, which were used to craft SQL Injection payloads for authentication bypass. Administrative persistence was then achieved through password manipulation, followed by transaction logic abuse to impact application integrity.
@@ -109,6 +111,8 @@ The following findings present direct risk to Confidentiality, Integrity, and Av
 | Business Risk | Complete loss of confidentiality             |
 | Remediation   | Parameterized queries and input sanitization |
 
+<img width="1884" height="1102" alt="Image" src="https://github.com/user-attachments/assets/d4ba8573-7bbc-45e9-8723-5eebff48400a" />
+
 ---
 
 ### WPT-006 — Parameter Tampering (Critical)
@@ -120,6 +124,14 @@ The following findings present direct risk to Confidentiality, Integrity, and Av
 | Impact        | Financial fraud scenario                   |
 | Business Risk | Direct revenue loss                        |
 | Remediation   | Strict server-side validation              |
+
+**Attack Flow**
+
+<img width="1624" height="1034" alt="Image" src="https://github.com/user-attachments/assets/a111ab81-8853-4f6b-a332-c6eb6d21b7b3" />
+
+<img width="1634" height="948" alt="Image" src="https://github.com/user-attachments/assets/4addb6ed-a557-4bb8-b896-6a6bbbec727d" />
+
+<img width="1638" height="814" alt="Image" src="https://github.com/user-attachments/assets/b3948b18-4778-4263-98a8-908e5da24eba" />
 
 ---
 
@@ -133,6 +145,14 @@ The following findings present direct risk to Confidentiality, Integrity, and Av
 | Business Risk | Enables targeted follow-on attacks           |
 | Remediation   | Role-Based Access Control and session checks |
 
+
+**Attack Flow**
+
+<img width="1440" height="978" alt="Image" src="https://github.com/user-attachments/assets/fbe02565-1586-4415-9665-6f38690e71fd" />
+
+<img width="1590" height="1294" alt="Image" src="https://github.com/user-attachments/assets/5f8648ae-3719-42a3-855e-a69e9b560c62" />
+
+<img width="1604" height="732" alt="Image" src="https://github.com/user-attachments/assets/86275154-c10a-4dae-92c3-349441b5186b" />
 ---
 
 ### WPT-004 — Password Method Manipulation (High)
@@ -145,6 +165,11 @@ The following findings present direct risk to Confidentiality, Integrity, and Av
 | Business Risk | Administrative lockout           |
 | Remediation   | Enforce POST and validate tokens |
 
+<img width="1730" height="1048" alt="Image" src="https://github.com/user-attachments/assets/592f0827-6a41-441b-8031-b25c5be4bf2d" />
+
+<img width="1766" height="1024" alt="Image" src="https://github.com/user-attachments/assets/236bd3ad-e835-4de0-baaa-d63b5c805ad0" />
+
+<img width="1600" height="702" alt="Image" src="https://github.com/user-attachments/assets/3683f9d9-e111-42c3-942e-bf3018a44fd6" />
 ---
 
 ### WPT-009 — Apache Byte Range DoS (High)
@@ -156,6 +181,8 @@ The following findings present direct risk to Confidentiality, Integrity, and Av
 | Impact        | Server crash risk                      |
 | Business Risk | Service unavailability                 |
 | Remediation   | Upgrade Apache and apply rate limiting |
+
+<img width="1836" height="374" alt="Image" src="https://github.com/user-attachments/assets/967eed51-c0d0-4ab4-aef2-7db1d41a2f19" />
 
 ---
 
@@ -184,41 +211,98 @@ Diagnostic and protocol-level exposures provide attackers with internal structur
 
 ## 6. Strategic Recommendations and Incident Response Roadmap
 
+As a security professional, my role extends beyond finding bugs to ensuring organizational resilience. 
+
+### Immediate Technical Remediation
+
+* **Input Validation**: Implement strict server-side allow-listing for all user inputs to neutralize SQL Injection and XSS vectors.
+
+* **Logic Enforcement**: Move all pricing and logic calculations to the server-side. Never trust the client.
+
+* **Patch Management**: Upgrade the web server (Apache), PHP, and OpenSSL to current stable versions immediately to mitigate RCE risks
+
 Security maturity requires organizational capability, not just technical patching.
 
-### Recommended Internal Capability
+## Recommended Internal Capability
 
-Establish an internal CSIRT or SOC capability to provide:
+### Strategic Recommendation: Internal CSIRT & SOC Implementation
 
-* Context-aware monitoring
-* Faster incident triage
-* Reduced third-party dependency
-* Improved response SLAs
-
-### Incident Handling Lifecycle
-
-| Phase                  | Objective                       |
-| ---------------------- | ------------------------------- |
-| Triage                 | Classify and register incidents |
-| Analysis               | Correlate and validate alerts   |
-| Containment            | Block and isolate threats       |
-| Eradication & Recovery | Remove root cause and restore   |
-| Lessons Learned        | Improve defensive posture       |
+To move beyond reactive patching and establish long-term resilience, the organization must transition into a proactive security posture. I recommend the formation of a dedicated Internal Computer Security Incident Response Team (CSIRT) supported by a Security Operations Center (SOC) capability.
 
 ---
 
-## Long-Term Mitigation Strategy
+## 1. The Value Proposition: Why Go Internal?
 
-| Initiative             | Value                          |
-| ---------------------- | ------------------------------ |
-| Replace EOL Systems    | Removes systemic exposure      |
-| Annual Security Drills | Improves readiness             |
-| Purple Team Exercises  | Tests real response capability |
-| SIEM with ELK          | Centralized visibility         |
-| 24/7 Alerting          | Faster detection               |
+While outsourcing is an option, establishing an internal team offers distinct strategic advantages that directly impact security outcomes:
+
+* Tailored Security Operations: An internal team creates monitoring protocols and processes specifically aligned with the organization's unique business needs and risk profile, rather than a generic "one-size-fits-all" approach.
+
+* Contextual Intelligence: Internal staff possess a deep, comprehensive understanding of the organization's specific network topology, data flows, and system dependencies. This allows for faster threat detection and more accurate risk assessment compared to external vendors.
+
+* Data Sovereignty & Control: Keeping security operations in-house ensures that sensitive logs and incident data remain within the organization's jurisdiction, reducing third-party privacy risks and ensuring compliance with data control regulations.
+
+* Service Level Agreements (SLAs): An internal team eliminates the friction of vendor communication, allowing for immediate incident handling without breaching SLAs. This integrity is critical for maintaining stakeholder trust.
 
 ---
 
-## Conclusion
+## 2. Proposed Technical Architecture
+
+To support this capability, we propose a cost-effective, open-source focused technology stack:
+
+* Centralized Monitoring (SIEM): Deploy the ELK Stack (Elasticsearch, Logstash, Kibana). This will serve as the core Security Information and Event Management (SIEM) solution, responsible for ingesting event data from the network and processing it to detect malicious or suspicious activities.
+
+* Threat Intelligence Integration: The architecture should integrate external threat feeds, such as AlienVault, to correlate internal logs with known global threat actors.
+
+* Incident Management & Alerting: Integrate the SIEM with ticketing and alerting platforms like PagerDuty. When the ELK stack detects a "True Positive" based on custom correlation rules, it will trigger an immediate alert to the triage team to streamline the workflow.
+
+---
+
+## 3. Operational Workflow: The Incident Handling Process
+
+The proposed workflow integrates Security Monitoring (detection) with Security Management (response), following a lifecycle approach:
+
+1. Triage & Analysis: Upon receiving an alert, the team analyzes the security incident to determine its validity and scope.
+
+2. Containment: The CSIRT coordinates the immediate response. This includes blocking malicious IP/DNS addresses and isolating affected systems to prevent lateral movement.
+
+3. Eradication & Mitigation: The team identifies the root cause and preserves forensic evidence. Remediation steps involve installing updates, patching unsupported systems, and implementing long-term fixes.
+
+4. Recovery: Once the threat is neutralized, the team assists in transitioning systems back to normal operations and removing temporary blocks.
+
+5. Post-Incident Review: The process concludes with a "Lessons Learned" phase to refine security protocols and prevent recurrence.
+
+---
+
+## 4. Resourcing Strategy
+
+Providing 24/7 coverage is resource-intensive, typically requiring six distinct teams to cover all shifts and holidays. To balance budget and security coverage, we recommend a hybrid operational model:
+
+* Business Hours: Full internal CSIRT operation.
+
+* Off-Hours: Use of an "On-Call" duty phone for emergency escalations, or outsourcing night/weekend monitoring to a third-party partner while retaining incident management authority in-house.
+
+
+---
 
 Security resilience is achieved through continuous improvement, proactive validation, and operational readiness. Addressing the identified vulnerabilities and implementing the strategic recommendations will significantly strengthen the BodgeIt application’s defensive posture and reduce business risk exposure.
+
+## Tools & Skills Demonstrated
+
+This engagement demonstrates proficiency in the following areas:
+
+• Vulnerability Assessment Tools: Nmap (Network Discovery), Nikto (Server Scanning), OWASP ZAP (Proxy/Interceptor), Burp Suite methodologies.
+
+• Manual Exploitation: SQL Injection, Parameter Tampering, HTTP Method Manipulation.
+
+• Security Frameworks: NIST SP 800-115, OWASP Top 10, MITRE ATT&CK.
+
+• Blue Team/Defensive Strategy: Designing CSIRT workflows, SIEM architecture (ELK), and Patch Management policies.
+
+• Reporting: Translating complex technical data into actionable business intelligence with calculated risk ratings (CVSS).
+
+
+**Copyright Notice**
+
+> *Copyright © 2024 [Sivarama_Krishnan_Chandran]. This work is the intellectual property of the author. No part of this publication may be reproduced, distributed, or transmitted in any form or by any means, including photocopying, recording, or other electronic or mechanical methods, without the prior written permission of the publisher, except in the case of brief quotations embodied in critical reviews and certain other noncommercial uses permitted by copyright law.*
+----------------------------------------------------------------------------------
+
