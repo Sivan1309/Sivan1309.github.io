@@ -165,6 +165,8 @@ The following findings present direct risk to Confidentiality, Integrity, and Av
 | Business Risk | Administrative lockout           |
 | Remediation   | Enforce POST and validate tokens |
 
+**Attack Flow**
+
 <img width="1730" height="1048" alt="Image" src="https://github.com/user-attachments/assets/592f0827-6a41-441b-8031-b25c5be4bf2d" />
 
 <img width="1766" height="1024" alt="Image" src="https://github.com/user-attachments/assets/236bd3ad-e835-4de0-baaa-d63b5c805ad0" />
@@ -223,15 +225,13 @@ As a security professional, my role extends beyond finding bugs to ensuring orga
 
 Security maturity requires organizational capability, not just technical patching.
 
-## Recommended Internal Capability
-
 ### Strategic Recommendation: Internal CSIRT & SOC Implementation
 
 To move beyond reactive patching and establish long-term resilience, the organization must transition into a proactive security posture. I recommend the formation of a dedicated Internal Computer Security Incident Response Team (CSIRT) supported by a Security Operations Center (SOC) capability.
 
 ---
 
-## 1. The Value Proposition: Why Go Internal?
+### 1. The Value Proposition: Why Go Internal?
 
 While outsourcing is an option, establishing an internal team offers distinct strategic advantages that directly impact security outcomes:
 
@@ -245,7 +245,7 @@ While outsourcing is an option, establishing an internal team offers distinct st
 
 ---
 
-## 2. Proposed Technical Architecture
+### 2. Proposed Technical Architecture
 
 To support this capability, we propose a cost-effective, open-source focused technology stack:
 
@@ -257,7 +257,7 @@ To support this capability, we propose a cost-effective, open-source focused tec
 
 ---
 
-## 3. Operational Workflow: The Incident Handling Process
+### 3. Operational Workflow: The Incident Handling Process
 
 The proposed workflow integrates Security Monitoring (detection) with Security Management (response), following a lifecycle approach:
 
@@ -273,7 +273,7 @@ The proposed workflow integrates Security Monitoring (detection) with Security M
 
 ---
 
-## 4. Resourcing Strategy
+### 4. Resourcing Strategy
 
 Providing 24/7 coverage is resource-intensive, typically requiring six distinct teams to cover all shifts and holidays. To balance budget and security coverage, we recommend a hybrid operational model:
 
@@ -286,7 +286,7 @@ Providing 24/7 coverage is resource-intensive, typically requiring six distinct 
 
 Security resilience is achieved through continuous improvement, proactive validation, and operational readiness. Addressing the identified vulnerabilities and implementing the strategic recommendations will significantly strengthen the BodgeIt application’s defensive posture and reduce business risk exposure.
 
-## Tools & Skills Demonstrated
+### Tools & Skills Demonstrated
 
 This engagement demonstrates proficiency in the following areas:
 
