@@ -229,8 +229,7 @@ Security maturity requires organizational capability, not just technical patchin
 
 To move beyond reactive patching and establish long-term resilience, the organization must transition into a proactive security posture. I recommend the formation of a dedicated Internal Computer Security Incident Response Team (CSIRT) supported by a Security Operations Center (SOC) capability.
 
-<img width="1286" height="1214" alt="Image" src="https://github.com/user-attachments/assets/54e301d7-2fc8-45ef-9d5a-bc5342a83cea" />
-
+<img width="1042" height="918" alt="Image" src="https://github.com/user-attachments/assets/a82b61b0-02f7-4bcd-a0fd-b66338bda95e" />
 ---
 
 ### 1. The Value Proposition: Why Go Internal?
