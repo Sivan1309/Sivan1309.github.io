@@ -229,6 +229,8 @@ Security maturity requires organizational capability, not just technical patchin
 
 To move beyond reactive patching and establish long-term resilience, the organization must transition into a proactive security posture. I recommend the formation of a dedicated Internal Computer Security Incident Response Team (CSIRT) supported by a Security Operations Center (SOC) capability.
 
+<img width="1286" height="1214" alt="Image" src="https://github.com/user-attachments/assets/54e301d7-2fc8-45ef-9d5a-bc5342a83cea" />
+
 ---
 
 ### 1. The Value Proposition: Why Go Internal?
@@ -261,15 +263,15 @@ To support this capability, we propose a cost-effective, open-source focused tec
 
 The proposed workflow integrates Security Monitoring (detection) with Security Management (response), following a lifecycle approach:
 
-1. **Triage & Analysis**: Upon receiving an alert, the team analyzes the security incident to determine its validity and scope.
+* **Triage & Analysis**: Upon receiving an alert, the team analyzes the security incident to determine its validity and scope.
 
-2. **Containment**: The CSIRT coordinates the immediate response. This includes blocking malicious IP/DNS addresses and isolating affected systems to prevent lateral movement.
+* **Containment**: The CSIRT coordinates the immediate response. This includes blocking malicious IP/DNS addresses and isolating affected systems to prevent lateral movement.
 
-3. **Eradication & Mitigation**: The team identifies the root cause and preserves forensic evidence. Remediation steps involve installing updates, patching unsupported systems, and implementing long-term fixes.
+* **Eradication & Mitigation**: The team identifies the root cause and preserves forensic evidence. Remediation steps involve installing updates, patching unsupported systems, and implementing long-term fixes.
 
-4. **Recovery**: Once the threat is neutralized, the team assists in transitioning systems back to normal operations and removing temporary blocks.
+* **Recovery**: Once the threat is neutralized, the team assists in transitioning systems back to normal operations and removing temporary blocks.
 
-5. **Post-Incident Review**: The process concludes with a "Lessons Learned" phase to refine security protocols and prevent recurrence.
+* **Post-Incident Review**: The process concludes with a "Lessons Learned" phase to refine security protocols and prevent recurrence.
 
 ---
 
