@@ -113,25 +113,26 @@ Optional enhancement: SOAR-based automated containment actions.
 ### Architecture Assessment Phase
 
 This phase serves as a critical "Go/No-Go" validation step before the Purple Team engagement begins. It ensures the environment is stable, secure, and capable of capturing the necessary telemetry for the exercise.
+
 **Infrastructure Readiness (AWS & OS)**
-• Instance Verification: Validate that AWS EC2 instances (Windows & Ubuntu) have the correct compute resources, IAM roles, and Security Group configurations to support the workload.
-• Hardening: Ensure the Operating Systems are patched, unnecessary services are disabled, and host-based firewalls are restricted to essential traffic only.
+* Instance Verification: Validate that AWS EC2 instances (Windows & Ubuntu) have the correct compute resources, IAM roles, and Security Group configurations to support the workload.
+* Hardening: Ensure the Operating Systems are patched, unnecessary services are disabled, and host-based firewalls are restricted to essential traffic only.
 **Telemetry & SIEM Validation**
-• Agent Health: Confirm "heartbeat" connectivity between endpoints (Windows/Ubuntu) and the Elastic Fleet Server.
-• Log Pipeline: Verify that critical logs—specifically Sysmon (Windows), Auditbeat (Linux), and standard Event Logs—are successfully ingesting into the Elastic SIEM without parsing errors.
+* Agent Health: Confirm "heartbeat" connectivity between endpoints (Windows/Ubuntu) and the Elastic Fleet Server.
+* Log Pipeline: Verify that critical logs—specifically Sysmon (Windows), Auditbeat (Linux), and standard Event Logs—are successfully ingesting into the Elastic SIEM without parsing errors.
 **Detection Logic & Intelligence**
-• Threat Intel Integration: Check that feeds from Abuse.ch and AlienVault OTX are active and correctly correlating against incoming log data.
-• Rule Tuning: Stress-test detection rules. Run benign activities to check for false positives (noise) and simple attacks (e.g., port scans) to validate true positives.
+* Threat Intel Integration: Check that feeds from Abuse.ch and AlienVault OTX are active and correctly correlating against incoming log data.
+* Rule Tuning: Stress-test detection rules. Run benign activities to check for false positives (noise) and simple attacks (e.g., port scans) to validate true positives.
 **Alerting Pipeline**
-• Notification Delivery: Trigger controlled alerts to verify they are successfully routed to the designated Slack channels.
-• Response Workflow: Confirm the SOC team receives alerts in real-time and has a defined process for acknowledging and investigating them.
+* Notification Delivery: Trigger controlled alerts to verify they are successfully routed to the designated Slack channels.
+* Response Workflow: Confirm the SOC team receives alerts in real-time and has a defined process for acknowledging and investigating them.
 **Performance Baselines**
-• System Stability: Monitor CPU and memory usage on EC2 instances and the SIEM during a quiet period to establish a performance baseline before adding Red Team load.
-• Log Throughput: Ensure the SIEM handles the current log volume within maintainable thresholds to prevent data loss or processing delays.
+* System Stability: Monitor CPU and memory usage on EC2 instances and the SIEM during a quiet period to establish a performance baseline before adding Red Team load.
+* Log Throughput: Ensure the SIEM handles the current log volume within maintainable thresholds to prevent data loss or processing delays.
 **Offensive Tool Verification**
-• Atomic Red Team: Verify the installation of the Atomic Red Team framework on both endpoints. Execute a basic TTP (Tactic, Technique, Procedure) to confirm the tool functions and generates the expected log activity.
+* Atomic Red Team: Verify the installation of the Atomic Red Team framework on both endpoints. Execute a basic TTP (Tactic, Technique, Procedure) to confirm the tool functions and generates the expected log activity.
 **Initial Security Baseline**
-• Vulnerability Scan: Conduct a pre-engagement assessment using AWS Inspector or manual audits to identify and document any pre-existing vulnerabilities, ensuring a clean baseline before the exercise begins.
+* Vulnerability Scan: Conduct a pre-engagement assessment using AWS Inspector or manual audits to identify and document any pre-existing vulnerabilities, ensuring a clean baseline before the exercise begins.
 
 ## 6. Purple Team Methodology: The Iterative Cycle
 
