@@ -1,8 +1,3 @@
----
-Title: "Adversary-Driven Defense: Engineering High-Fidelity Detections Through Purple Teaming"
-Date: 30/8/2024
---- 
-
 ## Adversary-Driven Defense: Engineering High-Fidelity Detections Through Purple Teaming
 
 ## 1. Executive Summary
