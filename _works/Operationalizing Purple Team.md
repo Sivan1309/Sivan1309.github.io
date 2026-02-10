@@ -6,7 +6,7 @@ The contemporary threat landscape is defined by a rapid evolution of attacker tr
 
 This project presents a structured Purple Teaming framework designed to close that gap by operationalizing continuous adversary emulation and detection engineering across heterogeneous platforms. Instead of treating Red Team and Blue Team functions as isolated exercises, this framework integrates them into an iterative, evidence-driven feedback loop where every offensive simulation produces measurable defensive improvements.
 
-The initiative shifts security operations from reactive alert handling to proactive detection validation. By synchronizing adversary simulation with real-time telemetry validation and rule tuning, the framework reduces detection blind spots, shortens investigation cycles, and strengthens defensive confidence in security controls already deployed. The outcome is not merely improved detection — it is measurable operational resilience, faster response readiness, and more efficient security investment utilization.
+The initiative shifts security operations from reactive alert handling to proactive detection validation. By synchronizing adversary simulation with real-time telemetry validation and rule tuning, the framework reduces detection blind spots, shortens investigation cycles, and strengthens defensive confidence in security controls already deployed. The outcome is not merely improved detection, it is measurable operational resilience, faster response readiness, and more efficient security investment utilization.
 
 ---
 
@@ -14,7 +14,7 @@ The initiative shifts security operations from reactive alert handling to proact
 
 Many enterprise security programs fail not due to lack of tooling, but due to fragmentation of operational responsibility and validation methodology. Traditional Red Team and Blue Team models often operate independently, with limited telemetry sharing, delayed reporting cycles, and minimal collaborative tuning. This creates an environment where detection controls are assumed effective but rarely validated against realistic attacker behavior.
 
-The primary risk is false confidence — controls exist, dashboards are populated, alerts fire — but coverage against real-world attacker TTPs remains incomplete, misaligned, or overly dependent on legacy attack patterns.
+The primary risk is false confidence - controls exist, dashboards are populated, alerts fire, but coverage against real-world attacker TTPs remains incomplete, misaligned, or overly dependent on legacy attack patterns.
 
 ### Systemic Vulnerabilities in Non-Collaborative Environments
 
@@ -209,7 +209,7 @@ The execution followed a strict operational workflow to ensure a controlled yet 
 
 2.  **Attack Execution:**
     *   The Red Team executed the **Atomic Red Team** script for `T1548.002`.
-    *   **Mechanism:** The script utilized "Living off the Land" binaries (LoLBins)—built-in Windows executables—to spawn a high-integrity process (e.g., `cmd.exe` or `powershell.exe`) by manipulating registry keys associated with UAC auto-elevation.
+    *   **Mechanism:** The script utilized "Living off the Land" binaries (LoLBins) built-in Windows executables to spawn a high-integrity process (e.g., `cmd.exe` or `powershell.exe`) by manipulating registry keys associated with UAC auto-elevation.
 
 <img width="1738" height="1260" alt="Image" src="https://github.com/user-attachments/assets/25c73a56-cdbd-4880-a4ea-f7debfa15194" />
 
@@ -218,7 +218,7 @@ The execution followed a strict operational workflow to ensure a controlled yet 
     *   **Data Collection:** Analysis focused on identifying specific Event IDs from Sysmon (Process Creation, Registry Modification) and Windows Security Logs.
 
 ## 7.3 Evaluation and Analysis
-The effectiveness of the detection logic was evaluated against three core criteria:
+The effectiveness of the detection logic was evaluated against the following core criteria:
 
 *   **Detection Capability:**
     *   The exercise successfully validated that the security stack could ingest and correlate the relevant logs.
@@ -293,7 +293,9 @@ Detection engineering prioritized **high-signal behavioral telemetry over log vo
 ### Telemetry Strategy
 
 **Sysmon** — process, network, lineage visibility
+
 **Auditbeat** — syscall and file monitoring
+
 **Winlogbeat** — authentication and system events
 
 ### Detection Logic Design
