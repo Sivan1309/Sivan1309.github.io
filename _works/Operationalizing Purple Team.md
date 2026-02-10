@@ -3,6 +3,7 @@ Title: "Adversary-Driven Defense: Engineering High-Fidelity Detections Through P
 Date: 30/8/2024
 --- 
 
+## Adversary-Driven Defense: Engineering High-Fidelity Detections Through Purple Teaming
 
 ## 1. Executive Summary
 
@@ -176,8 +177,6 @@ This phase breaks down the "silos" between attackers and defenders. Unlike a "bl
     *   **Live Feedback Loop:** If an attack is missed, the Red Team provides immediate feedback. This allows the Blue Team to understand *why* it was missed—whether it was a log ingestion failure, a misconfigured rule, or a lack of visibility.
     *   **Correlation:** Analysts work to correlate distinct behaviors (e.g., a file download followed by a process spawn) into a single actionable alert, moving beyond simple signature matching to behavioral analysis.
 
-![Figure 2: Methodologies]
-
 ### Enhancement: Tuning & Maturity Gains
 The final phase is where the "ROI" of the exercise is realized. The focus shifts from testing to **fixing and optimizing**.
 
@@ -195,18 +194,18 @@ The final phase is where the "ROI" of the exercise is realized. The focus shifts
 
 
 
-# 6. Proof of Concept (Phase 1) - Purple Team Exercise Execution
+# 7. Proof of Concept (Phase 1) - Purple Team Exercise Execution
 
 To validate the Purple Team architecture, **Atomic Red Team** was selected as the primary adversary emulation framework. This phase focused on testing the organization's defense against privilege escalation, a critical step in the cyber kill chain.
 
-## 6.1 Variant Selection: T1548.002 – Abuse Elevation Control Mechanism (Bypass UAC)
+## 7.1 Variant Selection: T1548.002 – Abuse Elevation Control Mechanism (Bypass UAC)
 The specific technique selected for this simulation was **MITRE ATT&CK T1548.002**.
 
 *   **Definition:** This technique involves exploiting the Windows User Account Control (UAC) mechanism to elevate process privileges without prompting the user for confirmation.
 *   **Threat Context:** Adversaries frequently utilize UAC bypasses to transition from a standard user context to high-integrity administrative privileges. Successfully executing this allows attackers to maintain persistence, modify system configurations, and evade standard defenses.
 *   **Selection Rationale:** This technique was chosen because it generates specific telemetry (registry modifications, process spawning) that challenges standard EDR configurations. It serves as a high-fidelity test for the Blue Team’s ability to distinguish between legitimate administrative actions and malicious escalation.
 
-## 6.2 Methodology Implementation Utilizing Atomic Red Team
+## 7.2 Methodology Implementation Utilizing Atomic Red Team
 The execution followed a strict operational workflow to ensure a controlled yet realistic simulation.
 
 1.  **Environment Preparation:**
@@ -223,7 +222,7 @@ The execution followed a strict operational workflow to ensure a controlled yet 
     *   The Blue Team monitored the **Elastic SIEM** dashboard.
     *   **Data Collection:** Analysis focused on identifying specific Event IDs from Sysmon (Process Creation, Registry Modification) and Windows Security Logs.
 
-## 6.3 Evaluation and Analysis
+## 7.3 Evaluation and Analysis
 The effectiveness of the detection logic was evaluated against three core criteria:
 
 *   **Detection Capability:**
@@ -242,17 +241,17 @@ The effectiveness of the detection logic was evaluated against three core criter
 
 ***
 
-# 7. Proof of Concept (Phase 2) - Ransomware Emulation with AttackIQ Flex
+# 8. Proof of Concept (Phase 2) - Ransomware Emulation with AttackIQ Flex
 
 Phase 2 shifted focus from stealthy escalation to high-impact destruction. This phase utilized **AttackIQ Flex** to emulate ransomware behavior using EICAR samples, rigorously testing the organization's automated response capabilities.
 
-## 7.1 Objective of Ransomware Adversary Emulation
+## 8.1 Objective of Ransomware Adversary Emulation
 Ransomware remains a dominant threat to enterprise continuity. The objectives of this emulation were:
 1.  **Endpoint Security Assessment:** Verify if Elastic Defend and Sysmon could detect mass-encryption behaviors.
 2.  **Incident Response Validation:** Measure the "Mean Time to Detect" (MTTD) and ensure automated alerts were routed to Slack immediately.
 3.  **Blue Team Readiness:** Provide the SOC team with hands-on experience in analyzing ransomware artifacts (ransom notes, file extension changes).
 
-## 7.2 Execution Methodology with AttackIQ Flex
+## 8.2 Execution Methodology with AttackIQ Flex
 **AttackIQ Flex** was deployed to manage the execution of EICAR ransomware samples across both Windows and Ubuntu Linux endpoints.
 
 1.  **Scenario Setup:**
@@ -269,7 +268,7 @@ Ransomware remains a dominant threat to enterprise continuity. The objectives of
     *   **Auditbeat** (on Linux) monitored for suspicious file creation events.
     *   **Network Monitoring** looked for command-and-control (C2) callbacks often associated with encryption key generation.
 
-## 7.3 Evaluation and Results
+## 8.3 Evaluation and Results
 
 *   **Detection Accuracy & Speed:**
     *   The focus was on how quickly the "Alert" pipeline processed the event.
@@ -292,7 +291,7 @@ Ransomware remains a dominant threat to enterprise continuity. The objectives of
 ### Value to Purple Teaming
 This phase demonstrated that while signature-based detection (EICAR) works well, behavioral detection (identifying the *act* of encryption) is critical for stopping zero-day ransomware. The collaboration allowed the Blue Team to refine their "Ransomware Playbook" to include immediate host isolation steps.
 
-## 8. Detection Engineering & Alerting Logic
+## 9. Detection Engineering & Alerting Logic
 
 Detection engineering prioritized **high-signal behavioral telemetry over log volume**.
 
@@ -323,7 +322,7 @@ Optional enhancement: severity-based alert routing.
 
 ---
 
-## 9. Security Outcomes & Business Impact
+## 10. Security Outcomes & Business Impact
 
 This framework produces operational and business-level security value by converting adversary simulation into validated detection capability.
 
@@ -360,7 +359,7 @@ Repeated adversary validation exercises build institutional detection confidence
 
 ---
 
-## 10. Project - Capability Demonstration Matrix
+## 11. Project - Capability Demonstration Matrix
 
 | Capability Domain          | Demonstrated Through This Project                                      | Practical Value to Security Teams                                         |
 | -------------------------- | ---------------------------------------------------------------------- | ------------------------------------------------------------------------- |
@@ -374,7 +373,7 @@ Repeated adversary validation exercises build institutional detection confidence
 
 ---
 
-## 11. Key Lessons Learned
+## 12. Key Lessons Learned
 
 This project demonstrates not only technical execution but also how to operationalize Purple Teaming in a way that delivers measurable defensive value to an organization.
 
@@ -403,7 +402,7 @@ Attackers pivot to weaker monitoring surfaces. I design and validate detection c
 
 ---
 
-## 12. Future Security Roadmap
+## 13. Future Security Roadmap
 
 Future evolution of this framework focuses on scaling detection maturity and response automation.
 
@@ -418,8 +417,6 @@ Use industry- and sector-specific threat intelligence to select higher-relevance
 
 **Detection Coverage Metrics**
 Extend ATT&CK mapping into measurable coverage scoring to guide detection engineering priorities.
-
----
 
 This framework demonstrates how structured Purple Teaming can be transformed from an occasional exercise into a continuous detection engineering program that strengthens operational defense, improves response speed, and delivers measurable security maturity gains.
 
