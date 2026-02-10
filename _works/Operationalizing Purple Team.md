@@ -64,7 +64,7 @@ Risk increases significantly in hybrid Windows/Linux environments where telemetr
 
 ## 4. Project Objectives & Strategic Goals
 
-"C:\Users\Admin\Sivan1309.github.io\_works\unnamed.png"
+<img width="2752" height="1536" alt="Image" src="https://github.com/user-attachments/assets/2f25b034-40ca-4174-9707-e8215f7a73a6" />
 
 This project defines operational security maturity as the ability to **detect, explain, and respond to attacker behavior**, not simply generate alerts.
 
