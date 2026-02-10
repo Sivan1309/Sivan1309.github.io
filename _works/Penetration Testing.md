@@ -290,15 +290,15 @@ Security resilience is achieved through continuous improvement, proactive valida
 
 This engagement demonstrates proficiency in the following areas:
 
-• Vulnerability Assessment Tools: Nmap (Network Discovery), Nikto (Server Scanning), OWASP ZAP (Proxy/Interceptor), Burp Suite methodologies.
+• **Vulnerability Assessment Tools**: Nmap (Network Discovery), Nikto (Server Scanning), OWASP ZAP (Proxy/Interceptor), Burp Suite methodologies.
 
-• Manual Exploitation: SQL Injection, Parameter Tampering, HTTP Method Manipulation.
+• **Manual Exploitation**: SQL Injection, Parameter Tampering, HTTP Method Manipulation.
 
-• Security Frameworks: NIST SP 800-115, OWASP Top 10, MITRE ATT&CK.
+• **Security Frameworks**: NIST SP 800-115, OWASP Top 10, MITRE ATT&CK.
 
-• Blue Team/Defensive Strategy: Designing CSIRT workflows, SIEM architecture (ELK), and Patch Management policies.
+• **Blue Team/Defensive Strategy**: Designing CSIRT workflows, SIEM architecture (ELK), and Patch Management policies.
 
-• Reporting: Translating complex technical data into actionable business intelligence with calculated risk ratings (CVSS).
+• **Reporting**: Translating complex technical data into actionable business intelligence with calculated risk ratings (CVSS).
 
 
 **Copyright Notice**
