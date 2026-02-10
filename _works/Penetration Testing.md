@@ -2,6 +2,8 @@
 
 ---
 
+<img width="2752" height="1536" alt="Image" src="https://github.com/user-attachments/assets/e3c1cfbe-244f-45b7-b4b9-ae966d03e400" />
+
 ## 1. Engagement Overview and Security Architecture
 
 In an era defined by increasingly sophisticated persistent threats, maintaining the security integrity of the BodgeIt store is a strategic necessity rather than a mere technical requirement. This assessment was conducted as a proactive security measure to identify exploitable weaknesses before they can be leveraged for financial loss, operational disruption, or reputational damage.
