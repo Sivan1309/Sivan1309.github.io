@@ -94,6 +94,8 @@ Cloud infrastructure supports rapid provisioning, controlled isolation, and repe
 **Windows + Ubuntu Endpoints**
 Cross-platform coverage ensures that detection engineering does not become Windows-centric while leaving Linux behaviors under-monitored.
 
+<img width="1470" height="380" alt="Image" src="https://github.com/user-attachments/assets/05093b5f-e3c5-4d52-96aa-38b4600e937f" />
+
 ### Telemetry & Detection Stack — Security Reasoning
 
 **Elastic Cloud SIEM** — centralized correlation and rule validation hub
@@ -107,6 +109,8 @@ Cross-platform coverage ensures that detection engineering does not become Windo
 **Auditbeat & Filebeat** — Linux syscall and file integrity monitoring
 
 **Slack Webhook Integration** — converts detection into immediate operational signal
+
+<img width="1290" height="754" alt="Image" src="https://github.com/user-attachments/assets/40f7fbfa-bd41-48c3-831b-6ac9740af876" />
 
 Optional enhancement: SOAR-based automated containment actions.
 
@@ -144,8 +148,6 @@ This phase serves as a critical "Go/No-Go" validation step before the Purple Tea
 
 ## 6. Purple Team Methodology: The Iterative Cycle
 
-Based on the detailed project report, here is an in-depth explanation of the **Purple Team Methodology: The Iterative Cycle**.
-
 This methodology transforms security testing from a linear "pass/fail" assessment into a **closed-loop detection engineering cycle**. Unlike traditional Red Teaming (which often ends with a report), this approach ensures that every simulation directly results in a defensive improvement before the cycle repeats.
 
 ### Planning: The Hypothesis-Driven Approach
@@ -156,7 +158,7 @@ In this phase, the team moves away from random "exploratory" testing to a struct
     *   By analyzing real-world data (e.g., from Abuse.ch or AlienVault OTX), the team prioritizes threats that are most likely to target the enterprise, mapping them directly to the **MITRE ATT&CK framework**.
     *   **Why this matters:** This ensures resources are spent testing defenses against *probable* threats rather than theoretical ones.
 
-![Figure 9: Cyber Threat Intelligence Workflow]
+<img width="1310" height="452" alt="Image" src="https://github.com/user-attachments/assets/64f39358-e36b-49b8-85d6-0a5dd1356dff" />
 
 *   **Define Expected Telemetry & Hypotheses:**
     *   Before execution, the Blue Team defines a **Detection Hypothesis**. For example: *"If the Red Team executes a UAC Bypass (T1548.002), we expect to see a Registry Key modification event in Sysmon with Event ID 13."*
@@ -215,7 +217,7 @@ The execution followed a strict operational workflow to ensure a controlled yet 
     *   The Red Team executed the **Atomic Red Team** script for `T1548.002`.
     *   **Mechanism:** The script utilized "Living off the Land" binaries (LoLBins)—built-in Windows executables—to spawn a high-integrity process (e.g., `cmd.exe` or `powershell.exe`) by manipulating registry keys associated with UAC auto-elevation.
 
-![Figure 10: Atomic Test script Invoke command]
+<img width="1738" height="1260" alt="Image" src="https://github.com/user-attachments/assets/25c73a56-cdbd-4880-a4ea-f7debfa15194" />
 
 3.  **Real-Time Monitoring:**
     *   The Blue Team monitored the **Elastic SIEM** dashboard.
@@ -228,9 +230,11 @@ The effectiveness of the detection logic was evaluated against three core criter
     *   The exercise successfully validated that the security stack could ingest and correlate the relevant logs.
     *   **Result:** The SIEM successfully triggered alerts based on the correlation of registry key modification followed immediately by a high-integrity process spawn.
 
-![Figure 11: Detection Capability]
-![Figure 12: Alerting Capability]
-![Figure 13: Top triggered rules]
+<img width="2394" height="1276" alt="Image" src="https://github.com/user-attachments/assets/98c2f02b-14e9-4059-8328-86c93bcdbb3b" />
+
+<img width="2390" height="532" alt="Image" src="https://github.com/user-attachments/assets/1363327d-89df-4d80-bdfc-309c0d8068ff" />
+
+<img width="1460" height="1340" alt="Image" src="https://github.com/user-attachments/assets/67146eac-b98a-4864-ac9f-5cb809cb0b53" />
 
 *   **Gap Analysis:**
     *   Initial testing highlighted potential gaps where default rule thresholds might generate false positives from legitimate software installers.
@@ -271,19 +275,19 @@ Ransomware remains a dominant threat to enterprise continuity. The objectives of
     *   The focus was on how quickly the "Alert" pipeline processed the event.
     *   **Observation:** Alerts were generated within seconds of the file modification events, proving the efficiency of the real-time pipeline.
 
-![Figure 14: Detection – MITRE Framework]
+<img width="1558" height="1042" alt="Image" src="https://github.com/user-attachments/assets/de6840c6-f458-4a42-b794-ca84acf3c455" />
 
 *   **Response & Mitigation:**
     *   The exercise evaluated whether "Prevention Mode" in Elastic Defend would isolate the process.
     *   **Outcome:** The system successfully identified the signature of the EICAR test files and the behavioral pattern of the encryption script, initiating automated blocking actions.
 
-![Figure 15: Response – MITRE Framework]
+<img width="1530" height="734" alt="Image" src="https://github.com/user-attachments/assets/f0db7d94-badd-4a28-9de8-de75a020cb2a" />
 
 *   **Gap Identification:**
     *   The emulation revealed specific nuances in Linux detection versus Windows detection.
     *   **Optimization:** Additional file integrity monitoring (FIM) rules were suggested for the Linux environment to catch ransomware that doesn't match standard signatures.
 
-![Figure 16: Gap Identification – Security Controls]
+<img width="1546" height="640" alt="Image" src="https://github.com/user-attachments/assets/0e2af33b-61a0-4d6f-ad76-7b136bb3b5c4" />
 
 ### Value to Purple Teaming
 This phase demonstrated that while signature-based detection (EICAR) works well, behavioral detection (identifying the *act* of encryption) is critical for stopping zero-day ransomware. The collaboration allowed the Blue Team to refine their "Ransomware Playbook" to include immediate host isolation steps.
@@ -356,7 +360,7 @@ Repeated adversary validation exercises build institutional detection confidence
 
 ---
 
-## 10. Portfolio Highlights — Capability Demonstration Matrix
+## 10. Project - Capability Demonstration Matrix
 
 | Capability Domain          | Demonstrated Through This Project                                      | Practical Value to Security Teams                                         |
 | -------------------------- | ---------------------------------------------------------------------- | ------------------------------------------------------------------------- |
@@ -370,7 +374,7 @@ Repeated adversary validation exercises build institutional detection confidence
 
 ---
 
-## 11. Key Lessons Learned (Hiring & Implementation Value)
+## 11. Key Lessons Learned
 
 This project demonstrates not only technical execution but also how to operationalize Purple Teaming in a way that delivers measurable defensive value to an organization.
 
@@ -418,3 +422,10 @@ Extend ATT&CK mapping into measurable coverage scoring to guide detection engine
 ---
 
 This framework demonstrates how structured Purple Teaming can be transformed from an occasional exercise into a continuous detection engineering program that strengthens operational defense, improves response speed, and delivers measurable security maturity gains.
+
+
+---------------------------------------------------------------------------------
+**Copyright Notice**
+
+> *Copyright © 2024 [Sivarama_Krishnan_Chandran]. This work is the intellectual property of the author. No part of this publication may be reproduced, distributed, or transmitted in any form or by any means, including photocopying, recording, or other electronic or mechanical methods, without the prior written permission of the publisher, except in the case of brief quotations embodied in critical reviews and certain other noncommercial uses permitted by copyright law.*
+----------------------------------------------------------------------------------
