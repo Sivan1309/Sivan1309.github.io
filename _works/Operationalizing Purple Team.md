@@ -1,4 +1,4 @@
-## Adversary-Driven Defense: Engineering High-Fidelity Detections Through Purple Teaming
+# Adversary-Driven Defense: Engineering High-Fidelity Detections Through Purple Teaming
 
 ## 1. Executive Summary
 
