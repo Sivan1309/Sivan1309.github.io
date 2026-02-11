@@ -12,9 +12,9 @@ The project scope encompassed the discovery of Log4j vulnerabilities across the 
 
 ### Key Impact Highlights
 
-* Risk Reduction: Neutralized unauthenticated RCE vulnerabilities in core academic systems (SIS, LMS, ERP), preventing full system compromise.
-* Compliance Alignment: Achieved rigorous data isolation and auditability required by GDPR and PCI DSS through AWS VPC and IAM integration.
-* Operational Resilience: Transitioned from hardware-dependent legacy systems to a scalable architecture capable of handling peak enrollment and exam traffic without performance degradation.
+* **Risk Reduction**: Neutralized unauthenticated RCE vulnerabilities in core academic systems (SIS, LMS, ERP), preventing full system compromise.
+* **Compliance Alignment**: Achieved rigorous data isolation and auditability required by GDPR and PCI DSS through AWS VPC and IAM integration.
+* **Operational Resilience**: Transitioned from hardware-dependent legacy systems to a scalable architecture capable of handling peak enrollment and exam traffic without performance degradation.
 
 The following analysis details the technical evidence, threat modeling, and defensive engineering utilized to achieve these results.
 
@@ -26,10 +26,10 @@ In complex, multi-tenant IT environments like a university, establishing rigid a
 
 The scope of this assessment includes:
 
-* Administrative Block: Strategic decision-making systems and technological support facilities.
-* University Datacenter: The central repository for application hosting and management.
-* Application Servers: Infrastructure hosting Enterprise Resource Planning (ERP), Student Information Systems (SIS), and Learning Management Systems (LMS).
-* Virtual Server Infrastructure: On-premises VMware environments (vCenter 7.0.x, 6.7x, 6.5x) hosting FTP, Mail, Web, and Database services.
+* **Administrative Block**: Strategic decision-making systems and technological support facilities.
+* **University Datacenter**: The central repository for application hosting and management.
+* **Application Servers**: Infrastructure hosting Enterprise Resource Planning (ERP), Student Information Systems (SIS), and Learning Management Systems (LMS).
+* **Virtual Server Infrastructure**: On-premises VMware environments (vCenter 7.0.x, 6.7x, 6.5x) hosting FTP, Mail, Web, and Database services.
 
 Our primary objectives focused on identifying every instance of Log4j exposure, categorizing risk based on business criticality, and architecting a remediated environment. This discovery phase involved deep-packet inspection and vulnerability scanning of core network components to determine the baseline security posture.
 
@@ -68,9 +68,9 @@ The vulnerability's impact is rooted in the Java Naming and Directory Interface 
 
 ### Log4j Layered Core Components
 
-1. Loggers: Capture the logging information and maintain it in a namespace hierarchy.
-2. Appenders: Publish the captured information to destinations (files, databases, consoles, or Syslog).
-3. Layouts: Format the logging data (HTML, XML, etc.) before publication, often providing assistance to Appenders.
+1. **Loggers**: Capture the logging information and maintain it in a namespace hierarchy.
+2. **Appenders**: Publish the captured information to destinations (files, databases, consoles, or Syslog).
+3. **Layouts**: Format the logging data (HTML, XML, etc.) before publication, often providing assistance to Appenders.
 
 <img width="798" height="918" alt="Image" src="https://github.com/user-attachments/assets/d9401a89-5161-47bc-bb76-42e57797835c" />
 
@@ -241,11 +241,11 @@ Operational efficiency is driven by **Open XDR**, which serves as our Orchestrat
 
 Technical controls must be codified in an institutional Information Security Policy aligned with the NIST Cybersecurity Framework (CSF).
 
-* Identify: Maintain an inventory of all assets; classify student information systems and research databases by sensitivity.
-* Protect: Implement RBAC and the principle of least privilege for administrative systems. Encrypt data in student databases and research repositories.
-* Detect: Use SIEM and continuous monitoring (IDS/IPS) to identify anomalies in network traffic and user behavior.
-* Respond: Execute documented incident response plans that specifically address Log4j vulnerabilities and data breaches.
-* Recover: Maintain disaster recovery and backup plans for critical financial and student record databases.
+* **Identify**: Maintain an inventory of all assets; classify student information systems and research databases by sensitivity.
+* **Protect**: Implement RBAC and the principle of least privilege for administrative systems. Encrypt data in student databases and research repositories.
+* **Detect**: Use SIEM and continuous monitoring (IDS/IPS) to identify anomalies in network traffic and user behavior.
+* **Respond**: Execute documented incident response plans that specifically address Log4j vulnerabilities and data breaches.
+* **Recover**: Maintain disaster recovery and backup plans for critical financial and student record databases.
 
 This framework ensures that security is a continuous process rather than a point-in-time fix, aligning security measures with the university's academic mission.
 
@@ -257,11 +257,11 @@ This assessment demonstrates the expertise required to manage risk in complex, h
 
 ### Core Skills Demonstrated
 
-* Threat Modeling: Prioritizing risks based on academic business impact and adversary motivation.
-* Cloud Security Architecture: Implementing secure VPC isolation and AWS-native security services.
-* Detection Engineering: Developing SIEM/SOAR workflows and WAF rulesets to neutralize JNDI exploits.
-* Risk Management: Performing Crown Jewel analysis and technical-to-executive risk translation.
-* Policy Development: Mapping institutional requirements to the NIST CSF and regulatory mandates (GDPR/PCI DSS).
+* **Threat Modeling**: Prioritizing risks based on academic business impact and adversary motivation.
+* **Cloud Security Architecture**: Implementing secure VPC isolation and AWS-native security services.
+* **Detection Engineering**: Developing SIEM/SOAR workflows and WAF rulesets to neutralize JNDI exploits.
+* **Risk Management**: Performing Crown Jewel analysis and technical-to-executive risk translation.
+* **Policy Development**: Mapping institutional requirements to the NIST CSF and regulatory mandates (GDPR/PCI DSS).
 
 The transition to a cloud-native, monitored, and governed environment ensures the university is prepared to defend against both current and emerging threats.
 
