@@ -265,7 +265,7 @@ This assessment demonstrates the expertise required to manage risk in complex, h
 
 The transition to a cloud-native, monitored, and governed environment ensures the university is prepared to defend against both current and emerging threats.
 
-
+---------------------------------------------------------------------------------
 **Copyright Notice**
 
 > *Copyright © 2024 [Sivarama_Krishnan_Chandran]. This work is the intellectual property of the author. No part of this publication may be reproduced, distributed, or transmitted in any form or by any means, including photocopying, recording, or other electronic or mechanical methods, without the prior written permission of the publisher, except in the case of brief quotations embodied in critical reviews and certain other noncommercial uses permitted by copyright law.*
