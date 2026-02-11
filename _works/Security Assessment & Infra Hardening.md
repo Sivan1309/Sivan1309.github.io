@@ -8,6 +8,8 @@ The disclosure of CVE-2021-44228, known as Log4Shell, represents a critical thre
 
 The project scope encompassed the discovery of Log4j vulnerabilities across the Admin block, Datacenter, and Virtual Infrastructure, followed by the implementation of a secured architecture. By neutralizing the RCE (Remote Code Execution) capabilities of the Log4j library, we have secured the university’s "Crown Jewels"—including the Student Information System (SIS), Learning Management System (LMS), and Enterprise Resource Planning (ERP) suite.
 
+<img width="2752" height="1536" alt="Image" src="https://github.com/user-attachments/assets/4e671e46-9738-4228-858f-7c6999e8c2de" />
+
 ### Key Impact Highlights
 
 * Risk Reduction: Neutralized unauthenticated RCE vulnerabilities in core academic systems (SIS, LMS, ERP), preventing full system compromise.
@@ -39,6 +41,8 @@ The university’s legacy environment relies on a 3-tier hierarchical model (Acc
 
 The current infrastructure includes a variety of unpatched components, from switches and routers to IP CAMs used for physical security. Of highest concern is the VMware vCenter environment, which is highly susceptible to Log4shell, potentially granting an adversary total control over the virtualized server farm.
 
+<img width="1630" height="1390" alt="Image" src="https://github.com/user-attachments/assets/6b9db818-22be-4613-a566-fb59925ba179" />
+
 ### Critical Asset Exposure Map
 
 | Vulnerable Software | Business Function                  | Institutional Impact                                     |
@@ -50,6 +54,8 @@ The current infrastructure includes a variety of unpatched components, from swit
 
 The technical mechanics of the Log4j vulnerability in these systems allow for unauthenticated remote exploitation, bypassing traditional perimeter defenses that treat logging as an "internal trust" function.
 
+<img width="508" height="466" alt="Image" src="https://github.com/user-attachments/assets/0d47d289-78d3-4877-995c-8e9fe945acf8" />
+
 ---
 
 ## 4. Technical Deep Dive: The Log4j (Log4Shell) Vulnerability (CVE-2021-44228)
@@ -58,19 +64,18 @@ Log4j is a ubiquitous Java-based logging framework. Its vulnerability stems from
 
 The vulnerability's impact is rooted in the Java Naming and Directory Interface (JNDI), an API that allows Java applications to discover and look up data and objects. Log4j’s ability to communicate with arbitrary LDAP and RMI servers via JNDI means that a logged string—such as a username or a simple header—can force the server to connect to a malicious external server, download a malicious Java class, and execute it locally.
 
+<img width="518" height="570" alt="Image" src="https://github.com/user-attachments/assets/bfe3b974-8a3b-4f54-b673-4cb50f923e2f" />
+
 ### Log4j Layered Core Components
 
 1. Loggers: Capture the logging information and maintain it in a namespace hierarchy.
 2. Appenders: Publish the captured information to destinations (files, databases, consoles, or Syslog).
 3. Layouts: Format the logging data (HTML, XML, etc.) before publication, often providing assistance to Appenders.
 
+<img width="798" height="918" alt="Image" src="https://github.com/user-attachments/assets/d9401a89-5161-47bc-bb76-42e57797835c" />
+
 This layered design, while flexible, allows the JNDI lookup to be triggered deep within the logging workflow, leading to a full system compromise.
 
----
-
-Based on the comprehensive project documentation and analysis logs, here is the detailed breakdown of the IT Risk Assessment Methodology and the Log4Shell Technical Execution path.
-
-***
 
 ## 5. IT Risk Assessment Methodology & Lifecycle
 
@@ -86,7 +91,7 @@ We executed the assessment through six distinct phases:
 * **Risk Assessment:** We mapped the probability of a threat occurring against its potential impact to determine the risk level.
 * **Risk Mitigation:** The final phase involved planning corrective actions, such as implementing Multi-Factor Authentication (MFA) and patching software.
 
-**[INSERT IMAGE PLACEHOLDER: Fig 3 - Risk Assessment Life Cycle Diagram showing the circular flow from Evaluation to Mitigation]**
+<img width="900" height="686" alt="Image" src="https://github.com/user-attachments/assets/5447ca62-85dd-41aa-abf3-2f73d50ff771" />
 
 ### Crown Jewel Analysis
 We identified specific systems where compromise would necessitate the cessation of university operations. An attack on the confidentiality or integrity of these systems would cause devastating physical, psychological, and reputational harm.
@@ -111,7 +116,7 @@ These motivations manifest through three primary attack vectors (Tactics, Techni
 *   **Phishing:** Deceiving staff or students via malicious links to gain an initial foothold.
 *   **Exploiting Public Applications:** Targeting unpatched known vulnerabilities (like Log4j) in the Data Center.
 
-**[INSERT IMAGE PLACEHOLDER: Fig 3.1 - University’s Possible Threat Sources (Compromised Accounts, Phishing, Exploiting Vulnerabilities)]**
+<img width="1872" height="552" alt="Image" src="https://github.com/user-attachments/assets/940bdea9-33a0-4f83-bafa-770d82eb3f9d" />
 
 ***
 
@@ -134,7 +139,7 @@ The attack leverages a flaw in how Log4j processes log messages, allowing an ext
 8.  **Deserialization:** The victim application receives and deserializes the object.
 9.  **Remote Code Execution:** Upon deserialization, the malicious code executes within the context of the web application, often with root or administrative privileges.
 
-**[INSERT IMAGE PLACEHOLDER: Fig 4.1 - RCE Attack Diagram showing the flow from Attacker to Application to LDAP and back]**
+<img width="1770" height="1106" alt="Image" src="https://github.com/user-attachments/assets/de76d881-b9da-49fd-bf37-9bff3edcb0e9" />
 
 ### Security Reasoning
 The root cause is an "internal trust" bypass. The application incorrectly trusts JNDI to fetch remote data without validation.
@@ -162,7 +167,7 @@ We implemented a two-pronged detection capability leveraging AWS native tools:
 *   **Vulnerability Scanning (AWS Inspector):**
     We utilized **AWS Inspector** to perform daily automated scans. This tool analyzes the application server's network accessibility and inspects HTTP/HTTPS requests and DNS lookups to confirm if the server remains exposed to the vulnerability or if new "Shadow IT" assets have appeared.
 
-**[INSERT IMAGE PLACEHOLDER: Fig 4.2 - Application Server Detection Architecture showing Inspector and CloudWatch integrations]**
+<img width="1362" height="668" alt="Image" src="https://github.com/user-attachments/assets/4fdaf3bb-6043-4ca1-8e72-af459b46bb82" />
 
 ### WAF Implementation Guide
 The Web Application Firewall (WAF) served as our first line of defense, deployed specifically on the **CloudFront** distribution handling ingress traffic.
@@ -197,7 +202,7 @@ The migration from on-premises VMware to AWS was not just a "lift and shift," bu
     *   We utilized VPCs to create logically isolated network spaces.
     *   **Crucial Isolation:** The **FTP** and **Database servers** were isolated within private subnets. These servers hold the university's "Crown Jewels"—student thesis papers, research data, and grade details. By removing direct internet gateways for these subnets, we significantly mitigated the risk of data exfiltration.
 
-**[INSERT IMAGE PLACEHOLDER: Fig 6.1 - Revised Security Infrastructure showing VPC isolation and AWS Services]**
+<img width="1910" height="1366" alt="Image" src="https://github.com/user-attachments/assets/1de1eb83-11ee-4fed-bcd7-a3a9fc0c0050" />
 
 ### On-Premises VMware vs. AWS Cloud
 The following table contrasts the limitations of the legacy environment with the capabilities of the new cloud architecture:
@@ -220,7 +225,7 @@ We deployed **Wazuh** as our SIEM, integrated with **AlienVault** threat feeds.
 *   **Correlation:** Wazuh correlates system logs against AlienVault's known Indicators of Compromise (IoCs). This allows us to detect if a server is communicating with an IP address known for distributing malware.
 *   **Behavioral Analysis:** The system detects anomalies, such as deviations in process behavior, and maps these alerts to the **MITRE ATT&CK framework** to give analysts context on the adversary's tactics.
 
-**[INSERT IMAGE PLACEHOLDER: Fig 6 - Flow Diagram showing Application Server -> Wazuh + AlienVault -> Slack Alert -> Analyst]**
+<img width="1424" height="340" alt="Image" src="https://github.com/user-attachments/assets/51280cff-0694-4502-9730-a3be618b3864" />
 
 ### Dark Web Monitoring (ZeroFox)
 To combat the risk of "Initial Access" via compromised credentials, we implemented **ZeroFox**.
@@ -259,3 +264,9 @@ This assessment demonstrates the expertise required to manage risk in complex, h
 * Policy Development: Mapping institutional requirements to the NIST CSF and regulatory mandates (GDPR/PCI DSS).
 
 The transition to a cloud-native, monitored, and governed environment ensures the university is prepared to defend against both current and emerging threats.
+
+
+**Copyright Notice**
+
+> *Copyright © 2024 [Sivarama_Krishnan_Chandran]. This work is the intellectual property of the author. No part of this publication may be reproduced, distributed, or transmitted in any form or by any means, including photocopying, recording, or other electronic or mechanical methods, without the prior written permission of the publisher, except in the case of brief quotations embodied in critical reviews and certain other noncommercial uses permitted by copyright law.*
+----------------------------------------------------------------------------------
