@@ -34,15 +34,15 @@ This content is written specifically for:
 
 The works in this repository include practical and research-driven write-ups on:
 
-- Secure data deletion on Windows systems - 
+- Secure data deletion on Windows systems - [Secure Data Deletion](https://github.com/Sivan1309/Cybersecurity_Technical_Portfolio/blob/main/_works/Understanding-Secure_deletion.md)
 - Secure email and communication security - [Secure Email](https://github.com/Sivan1309/Cybersecurity_Technical_Portfolio/blob/main/_works/Secure%20Email.md)
-- Network analysis and deep packet inspection  
-- Vulnerability analysis (including CVE-2022-26809 case study)  
-- Security assessment and infrastructure hardening - Log4j
-- Penetration testing methodology and practice  
-- Malware analysis investigations  
-- Operationalizing Purple Team strategy  
-- Attack Surface Management (ASM) SaaS business proposal (UK-focused model)  
+- Network analysis and deep packet inspection - [Network Analysis](https://github.com/Sivan1309/Cybersecurity_Technical_Portfolio/blob/main/_works/Network%20Analysis%20-%20Deep%20Packet%20Inspection.md)
+- Vulnerability analysis - CVE-2022-26809 - [Vulnerability Analysis](https://github.com/Sivan1309/Cybersecurity_Technical_Portfolio/blob/main/_works/Vulnerability%20Analysis%20-%20CVE-2022-26809.md)
+- Security assessment and infrastructure hardening (Log4j) - [Security Assessment & Infra Hardening](https://github.com/Sivan1309/Cybersecurity_Technical_Portfolio/blob/main/_works/Security%20Assessment%20%26%20Infra%20Hardening.md)
+- Penetration testing methodology and practice  - [Penetration Testing](https://github.com/Sivan1309/Cybersecurity_Technical_Portfolio/blob/main/_works/Penetration%20Testing.md)
+- Malware analysis investigations  - [Malware Analysis](https://github.com/Sivan1309/Cybersecurity_Technical_Portfolio/blob/main/_works/Malware%20Analysis.md)
+- Operationalizing Purple Team strategy - [Operationalizing Purple Team](https://github.com/Sivan1309/Cybersecurity_Technical_Portfolio/blob/main/_works/Operationalizing%20Purple%20Team.md)
+- Attack Surface Management (ASM) SaaS business proposal (UK-focused model) - [Business Proposal](https://github.com/Sivan1309/Cybersecurity_Technical_Portfolio/blob/main/_works/Business%20Proposal.md)
 
 ---
 
