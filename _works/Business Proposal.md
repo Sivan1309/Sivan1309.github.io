@@ -22,7 +22,7 @@ The rapid advancement of global adversaries mandates a strategic evolution in de
 
 The urgency for sophisticated ASM adoption is validated by market data, with the global ASM sector projected to grow at a compound annual growth rate (CAGR) of 31.3% through 2030. This growth is a direct response to the sophistication of attacking strategies and the persistent window of exposure caused by delayed patching. This shift from static assessments necessitates a deeper understanding of the specific risk exposures inherent in the modern enterprise.
 
-
+<img width="1924" height="1084" alt="Image" src="https://github.com/user-attachments/assets/977f37b5-8613-41f4-b83c-d8823c41947c" />
 
 ---
 
@@ -37,6 +37,8 @@ Comprehensive risk management requires total visibility across both digital and 
 | APIs & Shadow IT                   | Storage Media            |
 | Cloud-hosted Services & Containers | IoT Devices              |
 | Virtual Machines                   | OT/ICS Components        |
+
+<img width="1922" height="1066" alt="Image" src="https://github.com/user-attachments/assets/3f21bd15-6992-4f01-be6d-dc5f9933832e" />
 
 While our methodology encompasses the entire estate, we prioritise External Attack Surface Management (EASM) to evaluate vulnerabilities from the perimeter inward, just as an adversary would. Moving beyond mere asset identification, our framework transitions into the technical process of vulnerability correlation to determine true organisational risk.
 
@@ -54,6 +56,8 @@ By applying the Sudran threat model to raw data, we transform technical findings
 
 Securing the modern enterprise requires a collaborative consulting mindset that bridges the gap between technical security teams, IT operations, and executive leadership. We recognise that security remediation is a cross-functional responsibility; our role is to ensure that development teams and business units are fully aligned with the security mission.
 
+<img width="1938" height="1088" alt="Image" src="https://github.com/user-attachments/assets/f916de51-6934-49a3-9db8-566c683e62e0" />
+
 Our client onboarding process is structured into three levels to build trust and ensure seamless integration:
 
 * **Level 1: Alignment**: Establishing a baseline of organisational needs and critical asset profiles.
@@ -67,6 +71,8 @@ Our collaborative methodology ensures security is a foundational business driver
 ## Framework Mapping (ISO, NIST, NCSC)
 
 Aligning security operations with globally recognised and UK-specific regulatory standards is non-negotiable for demonstrating a commitment to organisational resilience. Sudran Technologies ensures that every ASM engagement is mapped to established frameworks to reduce business risk and ensure audit readiness.
+
+<img width="1906" height="1074" alt="Image" src="https://github.com/user-attachments/assets/5ee2a1e2-a2e5-4c86-8793-bcfece94ba03" />
 
 Our primary compliance alignments include:
 
@@ -132,9 +138,9 @@ To prove ROI to stakeholders, security must be data-driven. While the global ASM
 
 We track the following Measurable Outcomes:
 
-* Reduced Window of Exposure: Drastic reduction in the time between vulnerability emergence and remediation.
-* Successful Detection Rules: Generation of custom Indicators of Compromise (IOCs) from simulations.
-* Asset Visibility Index: Quantifiable growth in the identification of previously "Shadow IT" assets.
+* **Reduced Window of Exposure**: Drastic reduction in the time between vulnerability emergence and remediation.
+* **Successful Detection Rules**: Generation of custom Indicators of Compromise (IOCs) from simulations.
+* **Asset Visibility Index**: Quantifiable growth in the identification of previously "Shadow IT" assets.
 
 These internal metrics provide a clear view of your security posture relative to the broader competitive landscape.
 
@@ -143,6 +149,8 @@ These internal metrics provide a clear view of your security posture relative to
 ## Competitive Consulting Advantage
 
 Sudran Technologies’ holistic approach outperforms the siloed, tool-based offerings of legacy providers. Unlike competitors who offer fragmented services, we provide an Integrated ASM ecosystem that reduces vendor sprawl and integration friction.
+
+<img width="1924" height="1068" alt="Image" src="https://github.com/user-attachments/assets/826bf9c7-0302-4453-862f-8d85a23f759c" />
 
 | Feature              | Sudran Technologies      | BitSight, Group IB, Cortex Xpanse | Business Impact                      |
 | -------------------- | ------------------------ | --------------------------------- | ------------------------------------ |
@@ -159,20 +167,18 @@ Our integrated approach ensures a firm grip on the UK cybersecurity market, offe
 
 We view our engagement not as a vendor transaction, but as a long-term strategic partnership. Our Subscription-based Revenue Model provides the scalability required for your organisation to grow, allowing coverage to adjust as your infrastructure evolves.
 
+<img width="1910" height="1058" alt="Image" src="https://github.com/user-attachments/assets/8c06c575-1d82-4d1b-b046-b20f90819899" />
+
 Beyond our technical platform, we provide high-level advisory value in:
 
-* Contingency Planning: Structuring responses to potential system failures or data breaches.
-* Disaster Recovery: Implementing protocols for redundant backups and ransomware recovery.
+* **Contingency Planning**: Structuring responses to potential system failures or data breaches.
+* **Disaster Recovery**: Implementing protocols for redundant backups and ransomware recovery.
 
 As a partner in your business continuity, we ensure your security strategy scales alongside your growth, providing the resilience needed to survive in the modern market.
 
 ---
 
 ## Securing the Future: A Strategic Imperative for UK Enterprises
-
-Here is a redrafted conclusion based on your request. It incorporates your specific text while expanding on it to highlight your **MSc Cybersecurity** background, your **business acumen**, and the **innovative competitive advantages** detailed in the source material.
-
-***
 
 ### 15. Conclusion — Why This Consultant Should Be Hired
 
@@ -185,5 +191,12 @@ My value to your organisation lies in the ability to bridge the gap between comp
 Through this project, I bring distinct innovations that outperform global competitors like BitSight and Cortex Xpanse. I have designed this SaaS model to include **Dark Web monitoring**, **real-time compliance checking**, and **24/7 support**—features often missing or fragmented in other solutions. Furthermore, my deep understanding of the UK regulatory landscape ensures that all strategies are strictly aligned with the **UK GDPR**, the **Data Protection Act 2018**, and **NCSC guidelines**, protecting not just your assets, but your legal standing and reputation.
 
 By hiring Sudran Technologies, you are engaging a partner with deep technical expertise and a commitment to high-quality, ethical consulting. I empower you to outpace your adversaries, ensuring your organisation is prepared to face the challenges of today and the unknown threats of tomorrow.
+
+
+---------------------------------------------------------------------------------
+**Copyright Notice**
+
+> *Copyright © 2024 [Sivarama_Krishnan_Chandran]. This work is the intellectual property of the author. No part of this publication may be reproduced, distributed, or transmitted in any form or by any means, including photocopying, recording, or other electronic or mechanical methods, without the prior written permission of the publisher, except in the case of brief quotations embodied in critical reviews and certain other noncommercial uses permitted by copyright law.*
+----------------------------------------------------------------------------------
 
 
