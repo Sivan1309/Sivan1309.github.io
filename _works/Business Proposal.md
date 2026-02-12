@@ -18,7 +18,7 @@ Sudran Technologies provides the strategic oversight required to navigate the co
 
 The rapid advancement of global adversaries mandates a strategic evolution in defensive mechanisms. Traditional security architectures, built for centralised networks, are fundamentally ill-equipped to secure today’s dynamic, perimeter-less environments. We assert that penetration testing, while necessary for compliance, is no longer sufficient to mitigate modern risks; its point-in-time nature fails to capture the volatile cyber risks and zero-day vulnerabilities that define contemporary threats.
 
-<img width="1000" height="1066" alt="Image" src="https://github.com/user-attachments/assets/9459b0a6-b458-44c2-83e3-48853448e322" />
+<img width="700" height="1066" alt="Image" src="https://github.com/user-attachments/assets/9459b0a6-b458-44c2-83e3-48853448e322" />
 
 The urgency for sophisticated ASM adoption is validated by market data, with the global ASM sector projected to grow at a compound annual growth rate (CAGR) of 31.3% through 2030. This growth is a direct response to the sophistication of attacking strategies and the persistent window of exposure caused by delayed patching. This shift from static assessments necessitates a deeper understanding of the specific risk exposures inherent in the modern enterprise.
 
