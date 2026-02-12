@@ -34,8 +34,8 @@ This content is written specifically for:
 
 The works in this repository include practical and research-driven write-ups on:
 
-- Secure data deletion on Windows systems - _works/Understanding-Secure_deletion.md
-- Secure email and communication security - 
+- Secure data deletion on Windows systems - 
+- Secure email and communication security - [Secure Email](https://github.com/Sivan1309/Cybersecurity_Technical_Portfolio/blob/main/_works/Secure%20Email.md)
 - Network analysis and deep packet inspection  
 - Vulnerability analysis (including CVE-2022-26809 case study)  
 - Security assessment and infrastructure hardening - Log4j
