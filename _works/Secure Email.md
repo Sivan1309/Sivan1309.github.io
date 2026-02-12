@@ -1,11 +1,3 @@
----
-Title: "Stop Sending Postcards: A Deep Dive into Email Encryption and Security"
-Date: 2024-01-12 
----
-
-
-
-
 
 # Stop Sending Postcards: A Deep Dive into Email Encryption and Security
 
@@ -25,6 +17,8 @@ Here is what you will learn:
 *   **The Security Standards:** Discover how standard encryption protocols, such as **Open PGP and S/MIME**, ensure confidentiality and message integrity.
 *   **The Biggest Threats:** We will assess potential risks, from passive eavesdropping (sniffing) and overwhelming spam attacks to targeted cons like phishing and malicious spoofing.
 *   **Robust Solutions:** Finally, we’ll evaluate advanced, secure email clients like **Skiff Mail and Proton Mail**, which offer features like end-to-end encryption and zero-access architecture to remediate these security risks.
+
+<img width="1956" height="1018" alt="Image" src="https://github.com/user-attachments/assets/d691f234-f8b5-44bd-8733-78d3045bb2b5" />
 
 ---
 
