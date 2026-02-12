@@ -1,7 +1,4 @@
----
-Title: "The Delete Button Is Lying to You: Mastering Secure Data Destruction on Windows"
-Date: 2024-01-12
---- 
+
 # You Hit Delete. Did Your Data Really Die?
 
 Have you ever hit the "Delete" key on a sensitive work file and felt a rush of compliance? **We often assume that once a file is in the digital trash, it’s gone forever.** But when it comes to information security, that couldn't be further from the truth.
@@ -27,6 +24,8 @@ To protect ourselves from this major security gap, we need reliable answers. In 
 *   Why the operating system’s standard delete function is **not sufficient for secure data deletion**.
 *   The potential ways that deleted data can be recovered using common tools, emphasizing the risk this poses to information security.
 *   The **secure data destruction methods**—like overwriting, degaussing, or physical destruction—that organizations must implement to ensure data is permanently erased and irrecoverable.
+
+<img width="1896" height="1052" alt="Image" src="https://github.com/user-attachments/assets/557eedd1-360f-46bb-8eea-bf26a55faf99" />
 
 ***
 
