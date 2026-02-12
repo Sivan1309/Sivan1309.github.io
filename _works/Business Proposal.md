@@ -18,7 +18,7 @@ Sudran Technologies provides the strategic oversight required to navigate the co
 
 The rapid advancement of global adversaries mandates a strategic evolution in defensive mechanisms. Traditional security architectures, built for centralised networks, are fundamentally ill-equipped to secure today’s dynamic, perimeter-less environments. We assert that penetration testing, while necessary for compliance, is no longer sufficient to mitigate modern risks; its point-in-time nature fails to capture the volatile cyber risks and zero-day vulnerabilities that define contemporary threats.
 
-<img width="1912" height="1066" alt="Image" src="https://github.com/user-attachments/assets/9459b0a6-b458-44c2-83e3-48853448e322" />
+<img width="1000" height="1066" alt="Image" src="https://github.com/user-attachments/assets/9459b0a6-b458-44c2-83e3-48853448e322" />
 
 The urgency for sophisticated ASM adoption is validated by market data, with the global ASM sector projected to grow at a compound annual growth rate (CAGR) of 31.3% through 2030. This growth is a direct response to the sophistication of attacking strategies and the persistent window of exposure caused by delayed patching. This shift from static assessments necessitates a deeper understanding of the specific risk exposures inherent in the modern enterprise.
 
@@ -38,7 +38,7 @@ Comprehensive risk management requires total visibility across both digital and 
 | Cloud-hosted Services & Containers | IoT Devices              |
 | Virtual Machines                   | OT/ICS Components        |
 
-<img width="1922" height="1066" alt="Image" src="https://github.com/user-attachments/assets/3f21bd15-6992-4f01-be6d-dc5f9933832e" />
+<img width="1066" height="1066" alt="Image" src="https://github.com/user-attachments/assets/3f21bd15-6992-4f01-be6d-dc5f9933832e" />
 
 While our methodology encompasses the entire estate, we prioritise External Attack Surface Management (EASM) to evaluate vulnerabilities from the perimeter inward, just as an adversary would. Moving beyond mere asset identification, our framework transitions into the technical process of vulnerability correlation to determine true organisational risk.
 
@@ -56,7 +56,7 @@ By applying the Sudran threat model to raw data, we transform technical findings
 
 Securing the modern enterprise requires a collaborative consulting mindset that bridges the gap between technical security teams, IT operations, and executive leadership. We recognise that security remediation is a cross-functional responsibility; our role is to ensure that development teams and business units are fully aligned with the security mission.
 
-<img width="1938" height="1088" alt="Image" src="https://github.com/user-attachments/assets/f916de51-6934-49a3-9db8-566c683e62e0" />
+<img width="1088" height="1088" alt="Image" src="https://github.com/user-attachments/assets/f916de51-6934-49a3-9db8-566c683e62e0" />
 
 Our client onboarding process is structured into three levels to build trust and ensure seamless integration:
 
@@ -72,7 +72,7 @@ Our collaborative methodology ensures security is a foundational business driver
 
 Aligning security operations with globally recognised and UK-specific regulatory standards is non-negotiable for demonstrating a commitment to organisational resilience. Sudran Technologies ensures that every ASM engagement is mapped to established frameworks to reduce business risk and ensure audit readiness.
 
-<img width="1906" height="1074" alt="Image" src="https://github.com/user-attachments/assets/5ee2a1e2-a2e5-4c86-8793-bcfece94ba03" />
+<img width="1074" height="1074" alt="Image" src="https://github.com/user-attachments/assets/5ee2a1e2-a2e5-4c86-8793-bcfece94ba03" />
 
 Our primary compliance alignments include:
 
@@ -150,7 +150,7 @@ These internal metrics provide a clear view of your security posture relative to
 
 Sudran Technologies’ holistic approach outperforms the siloed, tool-based offerings of legacy providers. Unlike competitors who offer fragmented services, we provide an Integrated ASM ecosystem that reduces vendor sprawl and integration friction.
 
-<img width="1924" height="1068" alt="Image" src="https://github.com/user-attachments/assets/826bf9c7-0302-4453-862f-8d85a23f759c" />
+<img width="1068" height="1068" alt="Image" src="https://github.com/user-attachments/assets/826bf9c7-0302-4453-862f-8d85a23f759c" />
 
 | Feature              | Sudran Technologies      | BitSight, Group IB, Cortex Xpanse | Business Impact                      |
 | -------------------- | ------------------------ | --------------------------------- | ------------------------------------ |
@@ -167,7 +167,7 @@ Our integrated approach ensures a firm grip on the UK cybersecurity market, offe
 
 We view our engagement not as a vendor transaction, but as a long-term strategic partnership. Our Subscription-based Revenue Model provides the scalability required for your organisation to grow, allowing coverage to adjust as your infrastructure evolves.
 
-<img width="1910" height="1058" alt="Image" src="https://github.com/user-attachments/assets/8c06c575-1d82-4d1b-b046-b20f90819899" />
+<img width="1058" height="1058" alt="Image" src="https://github.com/user-attachments/assets/8c06c575-1d82-4d1b-b046-b20f90819899" />
 
 Beyond our technical platform, we provide high-level advisory value in:
 
