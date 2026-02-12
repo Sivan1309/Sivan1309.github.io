@@ -22,7 +22,7 @@ The rapid advancement of global adversaries mandates a strategic evolution in de
 
 The urgency for sophisticated ASM adoption is validated by market data, with the global ASM sector projected to grow at a compound annual growth rate (CAGR) of 31.3% through 2030. This growth is a direct response to the sophistication of attacking strategies and the persistent window of exposure caused by delayed patching. This shift from static assessments necessitates a deeper understanding of the specific risk exposures inherent in the modern enterprise.
 
-<img width="1924" height="1084" alt="Image" src="https://github.com/user-attachments/assets/977f37b5-8613-41f4-b83c-d8823c41947c" />
+<img width="1084" height="1084" alt="Image" src="https://github.com/user-attachments/assets/977f37b5-8613-41f4-b83c-d8823c41947c" />
 
 ---
 
