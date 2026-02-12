@@ -1,5 +1,3 @@
-# 🛡️ Cybersecurity Technical Portfolio Repository
-
 ## 📌 Repository Overview
 
 This repository contains my cybersecurity master’s coursework transformed into practical, engaging technical security content. Instead of publishing traditional academic reports, I have converted my learning, research, and hands-on projects into readable blog-style security write-ups designed for real-world relevance and professional review.
